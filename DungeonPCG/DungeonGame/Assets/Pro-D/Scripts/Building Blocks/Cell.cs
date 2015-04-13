@@ -9,6 +9,9 @@
 using UnityEngine;
 using System;
 
+//stores an x,y pair along with a type.
+//implements IComparable so we can compare cells for A* pathfinding.
+
 namespace ProD
 {
 	//You should note that this script doesn't inherit from Monobehaviour.

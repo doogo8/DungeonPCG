@@ -9,6 +9,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+//provides a system for using cardinal directions.
+//allows for the exploring of nearby cells.
+//stores whether a cell has been visited.
+
 namespace ProD
 {
 	//Used by the MazeGenerator.cs and other Generator type scripts.
