@@ -110,7 +110,7 @@ function Update(){
 		//Armor plate.
 		adventurerArmor.GetComponent.<Animation>().Blend(previousAnimationName,0.0);
 		adventurerArmor.GetComponent.<Animation>().Blend(currentAnimationName, 1.0);
-		adventurer.GetComponent.<Animation>()[currentAnimationName].normalizedTime = normalizedTime;
+		adventurerArmor.GetComponent.<Animation>()[currentAnimationName].normalizedTime = normalizedTime;
 		//Treasure chest.
 		if(currentAnimationName == "openChest"){
 			treasureChest.GetComponent.<Renderer>().enabled = true;
