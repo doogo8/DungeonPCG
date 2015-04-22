@@ -1,4 +1,4 @@
-﻿/* 
+/* 
 * This code has been designed and developed by Gray Lake Studios.
 * You may only use this code if you’ve acquired the appropriate license.
 * To acquire such licenses you may visit www.graylakestudios.com and/or Unity Asset Store
@@ -142,6 +142,9 @@ namespace ProD
 				Destroy(playerGO);
 				playerGO = null;
 			}
+		}
+
+		public void SpawnEnemies () {
 		}
 
 		public FogOfWar getFogOfWar()

@@ -65,6 +65,7 @@ namespace ProD
 					case "Dungeon":
 						Generator_Dungeon.SetGenericProperties(_map_Size_X,_map_Size_Y, theme);
 						tempMap = Generator_Dungeon.Generate();
+//						tempMap.PopulateEnemies();
 						break;
 					case "DungeonRuins":
 						Generator_DungeonRuins.SetGenericProperties(_map_Size_X,_map_Size_Y, theme);
