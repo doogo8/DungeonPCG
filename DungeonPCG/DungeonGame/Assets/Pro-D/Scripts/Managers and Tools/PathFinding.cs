@@ -211,6 +211,7 @@ namespace ProD
 				{
 					targetX = lastPlayerPosition.x;
 					targetY = lastPlayerPosition.y;
+					print ("player pos: " + lastPlayerPosition.x + ", " + lastPlayerPosition.y);
 					UpdatePathfinding(lastPlayerPosition);
 				}
 

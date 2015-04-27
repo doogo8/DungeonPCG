@@ -22,6 +22,10 @@ namespace ProD
 		public WorldMap currentWorld { get; set; }
 		public Cell currentCell { get; set; }
 
+//		void Update(){
+//			print ( currentCell.x + ", " + currentCell.y);
+//		}
+
 		public bool MoveToCell(Cell targetCell)
 		{
 			if (currentWorld == null || currentMap == null)
@@ -63,5 +67,6 @@ namespace ProD
 
 			return true;
 		}
+
 	}
 }

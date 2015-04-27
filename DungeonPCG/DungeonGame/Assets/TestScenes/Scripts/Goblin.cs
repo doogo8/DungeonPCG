@@ -2,20 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Goblin : Monster
-{
-	void Start ()
+namespace ProD{
+	public class Goblin : Monster
 	{
-		this.aggroRange = AggroRange.Low;
-		this.roamSpeed = Speed.Low;
-		this.chaseSpeed = Speed.Medium;
-		this.attackType = AttackType.Melee;
-		this.maxHealth = Health.Low;
-		this.currentHealth = Health.Low;
-		this.attackDamage = Damage.Low;
+		void Start ()
+		{
+			this.aggroRange = AggroRange.Low;
+			this.roamSpeed = Speed.Low;
+			this.chaseSpeed = Speed.Medium;
+			this.attackType = AttackType.Melee;
+			this.maxHealth = Health.Low;
+			this.currentHealth = Health.Low;
+			this.attackDamage = Damage.Low;
 
-		attackAnimations.Add(_animation["axe attack"].clip);
-		attackAnimations.Add(_animation["spear attack"].clip);
+			attackAnimations.Add(_animation["axe attack"].clip);
+			attackAnimations.Add(_animation["spear attack"].clip);
+		}
 	}
-	
 }

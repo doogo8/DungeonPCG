@@ -39,11 +39,11 @@ namespace ProD
 
 				wasMoveSuccessful = MoveToCell(currentMap.cellsOnMap[currentCell.x + moveX, currentCell.y + moveY]);
 			} while (!wasMoveSuccessful);
-			
 
 
 			TurnManager.Instance.endTurn(this);
 		}
+
 
 	} 
 }

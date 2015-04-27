@@ -288,6 +288,7 @@ namespace ProD
 
 				void Update ()
 				{
+
 						if (Input.GetKeyDown (KeyCode.H)) {
 								isCollapsed = !isCollapsed;
 						}
