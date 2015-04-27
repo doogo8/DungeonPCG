@@ -16,9 +16,9 @@ public class Monster : MonoBehaviour
 	}
 
 	public class Speed{
-		public const float Low = 0.05f;
-		public const float Medium = 0.1f;
-		public const float High = 0.2f;
+		public const float Low = 1f;
+		public const float Medium = 2f;
+		public const float High = 4f;
 	}
 
 	public class Health{
@@ -209,6 +209,16 @@ public class Monster : MonoBehaviour
 	void lerpTowardTargetLocation (Vector3 targetPos, float speed)
 	{
 		transform.forward = Vector3.Lerp (transform.forward, (targetPos - transform.position), Time.deltaTime * 3f);
-		transform.position = Vector3.MoveTowards (transform.position, targetPos, speed);
+
+		Vector3 moveDiff = targetPos - transform.position;
+		Vector3 movDir = moveDiff.normalized * speed * Time.deltaTime;
+		if(movDir.sqrMagnitude < moveDiff.sqrMagnitude)
+		{
+			GetComponent<CharacterController>().Move(movDir);
+		}
+		else
+		{
+			GetComponent<CharacterController>().Move(moveDiff);
+		}
 	}
 }

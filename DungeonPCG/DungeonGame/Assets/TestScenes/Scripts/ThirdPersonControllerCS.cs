@@ -362,7 +362,7 @@ public AnimationClip jumpPoseAnimation;
 			if(Input.GetMouseButtonDown(0)){
 				if(!attacking){
 					attackClipIndex = (int)Mathf.Floor(Random.Range(0f, (float)attackAnimations.Count));
-					StartCoroutine(PlayAttackAnimation(attackAnimations[attackClipIndex]));
+					StartCoroutine(WaitForAnimationToEnd(attackAnimations[attackClipIndex]));
 				}
 			}
 
@@ -401,7 +401,7 @@ public AnimationClip jumpPoseAnimation;
 		}
 	}
 
-	private IEnumerator PlayAttackAnimation (AnimationClip a)
+	private IEnumerator WaitForAnimationToEnd (AnimationClip a)
 	{
 		attacking = true;
 		yield return new WaitForSeconds (a.length);
