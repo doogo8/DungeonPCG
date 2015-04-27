@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour
 	}
 
 	public class Health{
-		public const float Low = 50f;
+		public const float Low = 10f;
 		public const float Medium = 100f;
 		public const float High = 200f;
 	}
@@ -37,6 +37,9 @@ public class Monster : MonoBehaviour
 
 	public float currentHealth;
 	public float maxHealth;
+	public bool dead;
+	bool deathClipDone;
+	bool deathClipStarted;
 
 	public float aggroRange = 7f;
 	public float chaseSpeed = 0.6f;
@@ -48,6 +51,7 @@ public class Monster : MonoBehaviour
 	public AnimationClip idleAnimation;
 	public AnimationClip walkAnimation;
 	public AnimationClip runAnimation;
+	public AnimationClip dieAnimation;
 	public List<AnimationClip> attackAnimations;
 	public Animation _animation;
 
@@ -65,18 +69,55 @@ public class Monster : MonoBehaviour
 
 	void Update ()
 	{
-		if(aggroingPlayer && !reachedPlayer()){
-			chase ();
-		}else if (aggroingPlayer && reachedPlayer()){
-			attack ();
-		}else if(!aggroingPlayer){
-			roam ();
+		checkForDeath();
+
+		if(!dead){
+			if(aggroingPlayer && !reachedPlayer()){
+				chase ();
+			}else if (aggroingPlayer && reachedPlayer()){
+				attack ();
+			}else if(!aggroingPlayer){
+				roam ();
+			}
+
+			if (spottedPlayer ()) {
+				aggroingPlayer = true;
+			}
+		}else{
+			die();
 		}
 
-		if (spottedPlayer ()) {
-			aggroingPlayer = true;
+	}
+
+	void checkForDeath(){
+		if(currentHealth <= 0f) 
+			dead = true;
+		else
+			dead = false;
+	}
+	
+	void die(){
+		if(deathClipStarted == false){
+			_animation.CrossFade(dieAnimation.name);
+			deathClipStarted = true;
 		}
 
+		if(!_animation.IsPlaying(dieAnimation.name)){
+			deathClipDone = true;
+		}
+
+		if(deathClipDone){
+			Component[] g = GetComponents(typeof(Component));
+
+			foreach(Component comp in g){
+				if(!(comp is UnityEngine.Transform) && !(comp is Monster))
+					Destroy (comp);
+			}
+
+			Destroy (GetComponent<Monster>());
+			Destroy (transform.Find("MonsterUI").gameObject);
+			Destroy (transform.Find("MonsterHitCube").gameObject);
+		}
 	}
 
 	bool spottedPlayer ()
