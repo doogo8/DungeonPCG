@@ -351,19 +351,22 @@ public AnimationClip jumpPoseAnimation;
 			}
 
 
-			if(Input.GetMouseButton(0)){
-				_animation.CrossFade(sword2Animation.name);
+			if(Input.GetMouseButtonDown(0)){
+				if(!attacking){
+					StartCoroutine(PlayAttackAnimation(sword2Animation));
+				}
 			}
 
+			if(attacking)
+				_animation.CrossFade(sword2Animation.name);
+			
 		}
 		// ANIMATION sector
 		
 		// Set rotation to the move direction
 		if (IsGrounded())
 		{
-			
 			transform.rotation = Quaternion.LookRotation(moveDirection);
-			
 		}  
 		else
 		{
@@ -387,6 +390,14 @@ public AnimationClip jumpPoseAnimation;
 			}
 		}
 	}
+
+	private IEnumerator PlayAttackAnimation (AnimationClip a)
+	{
+		attacking = true;
+		yield return new WaitForSeconds (a.length);
+		attacking = false;
+	}
+
 	void  OnControllerColliderHit ( ControllerColliderHit hit   ){
 		//  Debug.DrawRay(hit.point, hit.normal);
 		if (hit.moveDirection.y > 0.01f)
