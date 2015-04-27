@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 [AddComponentMenu("Rayco's scripts/third person controller")]
 public class ThirdPersonControllerCS : MonoBehaviour {
 	public AnimationClip idleAnimation;
 	public AnimationClip walkAnimation;
 	public AnimationClip runAnimation;
 	public AnimationClip jumpPoseAnimation;
+	public List<AnimationClip> attackAnimations;
+	int attackClipIndex;
 	public AnimationClip sword1Animation;
 	public AnimationClip sword2Animation;
 	public AnimationClip sword3Animation;
@@ -99,6 +103,10 @@ public class ThirdPersonControllerCS : MonoBehaviour {
 	// Use this for initialization
 	void  Awake (){
 		moveDirection = transform.TransformDirection(Vector3.forward);
+
+		attackAnimations.Add(sword1Animation);
+		attackAnimations.Add(sword2Animation);
+		attackAnimations.Add(sword3Animation);
 		
 		_animation = GetComponent<Animation>();
 		if(!_animation)
@@ -353,12 +361,14 @@ public AnimationClip jumpPoseAnimation;
 
 			if(Input.GetMouseButtonDown(0)){
 				if(!attacking){
-					StartCoroutine(PlayAttackAnimation(sword2Animation));
+					attackClipIndex = (int)Mathf.Floor(Random.Range(0f, (float)attackAnimations.Count));
+					StartCoroutine(PlayAttackAnimation(attackAnimations[attackClipIndex]));
 				}
 			}
 
-			if(attacking)
-				_animation.CrossFade(sword2Animation.name);
+			if(attacking){
+				_animation.CrossFade(attackAnimations[attackClipIndex].name);
+			}
 			
 		}
 		// ANIMATION sector
