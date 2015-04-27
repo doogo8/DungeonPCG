@@ -99,9 +99,16 @@ public class ThirdPersonControllerCS : MonoBehaviour {
 	
 	
 	private bool isControllable = true;
+
+	//Audio stuff
+	public AudioClip footstepSound;
+	private AudioSource audioSource;
+	private float lowPitchRange = .75F;
+	private float highPitchRange = 1.5F;
 	
 	// Use this for initialization
 	void  Awake (){
+		audioSource = GetComponent<AudioSource>();
 		moveDirection = transform.TransformDirection(Vector3.forward);
 
 		attackAnimations.Add(sword1Animation);
@@ -345,14 +352,26 @@ public AnimationClip jumpPoseAnimation;
 					if(_characterState == CharacterState.Running) {
 						_animation[runAnimation.name].speed = Mathf.Clamp(controller.velocity.magnitude, 0.0f, runMaxAnimationSpeed);
 						_animation.CrossFade(runAnimation.name);   
+						audioSource.loop = true;
+						audioSource.pitch = Random.Range (lowPitchRange, highPitchRange);
+						audioSource.PlayDelayed(1f);
 					}
 					else if(_characterState == CharacterState.Trotting) {
 						_animation[walkAnimation.name].speed = Mathf.Clamp(controller.velocity.magnitude, 0.0f, trotMaxAnimationSpeed);
 						_animation.CrossFade(walkAnimation.name);  
+						audioSource.loop = true;
+						audioSource.pitch = Random.Range (lowPitchRange, highPitchRange);
+						audioSource.PlayDelayed(1f);
 					}
 					else if(_characterState == CharacterState.Walking) {
 						_animation[walkAnimation.name].speed = Mathf.Clamp(controller.velocity.magnitude, 0.0f, walkMaxAnimationSpeed);
-						_animation.CrossFade(walkAnimation.name);  
+						_animation.CrossFade(walkAnimation.name);
+						audioSource.loop = true;
+						if (!audioSource.isPlaying) {
+							audioSource.pitch = Random.Range (lowPitchRange, highPitchRange);
+							audioSource.Play();
+						}
+						else audioSource.Stop();
 					}
 					
 				}

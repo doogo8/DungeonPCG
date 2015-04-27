@@ -15,7 +15,14 @@ public class Player : MonoBehaviour {
 	bool deathClipDone;
 	bool deathClipStarted;
 
-	void Start () {
+	public AudioClip swooshSound;
+	public AudioClip hitSound;
+	private AudioSource audioSource;
+	private float lowPitchRange = .75F;
+	private float highPitchRange = 1.5F;
+
+	void Start () {	
+		audioSource = GetComponent<AudioSource> ();
 		hitCube = transform.Find("PlayerHitCube").gameObject;
 		_animation = GetComponent<Animation> ();
 		maxHealth = 100f;
@@ -34,11 +41,15 @@ public class Player : MonoBehaviour {
 				foreach(Monster m in hitList){
 					m.currentHealth -= 10;
 				}
+				audioSource.pitch = Random.Range (lowPitchRange, highPitchRange);
+				audioSource.PlayOneShot (hitSound, 1f);
 				haveLandedAHit = true;
 			}
 
 			if(!amAttacking() && haveLandedAHit){
 				haveLandedAHit = false;
+				audioSource.pitch = Random.Range (lowPitchRange, highPitchRange);
+				audioSource.PlayOneShot (swooshSound, 1f);
 			}
 		}else{
 			die();
