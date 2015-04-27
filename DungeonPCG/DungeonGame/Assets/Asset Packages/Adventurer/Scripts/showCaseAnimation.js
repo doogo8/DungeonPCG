@@ -140,7 +140,7 @@ function Update(){
 	if(Time.time > lastNoiseTime + 0.4){
 		noiseToogle = true;
 	}
-	shield.GetComponent("heavyLimb").heavyness = 0.5;	
+//	shield.GetComponent("heavyLimb").heavyness = 0.5;	
 	switch(currentAnimationName){
 		case "walk":
 		case "walkSword":
@@ -267,7 +267,7 @@ function Update(){
 			}			
 			break;
 		case "shieldBlock":
-			shield.GetComponent("heavyLimb").heavyness = 0.1;	
+//			shield.GetComponent("heavyLimb").heavyness = 0.1;	
 			if(currentAnimationName != previousAnimationName){
 				if(!showShield){
 					showShield = true;

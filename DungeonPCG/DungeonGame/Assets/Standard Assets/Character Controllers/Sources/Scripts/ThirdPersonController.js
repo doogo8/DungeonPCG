@@ -15,6 +15,7 @@ public var trotMaxAnimationSpeed : float = 1.0;
 public var runMaxAnimationSpeed : float = 1.0;
 public var jumpAnimationSpeed : float = 1.15;
 public var landAnimationSpeed : float = 1.0;
+public var swordAnimationSpeed : float = 1.0;
 
 private var _animation : Animation;
 
@@ -198,6 +199,7 @@ function UpdateSmoothedMovementDirection ()
 	
 		_characterState = CharacterState.Idle;
 		
+		
 		// Pick speed modifier
 		if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift))
 		{
@@ -213,6 +215,7 @@ function UpdateSmoothedMovementDirection ()
 		{
 			targetSpeed *= walkSpeed;
 			_characterState = CharacterState.Walking;
+			
 		}
 		
 		moveSpeed = Mathf.Lerp(moveSpeed, targetSpeed, curSmooth);
@@ -363,8 +366,8 @@ function Update() {
 			}
 		}
 		
-		if(Input.GetMouseButtonDown(0)){
-			_animation.CrossFade(sword1Animation.name);
+		if(Input.GetMouseButton(0)){
+			_animation.CrossFade(sword2Animation.name);
 		}
 
 	}
@@ -373,9 +376,7 @@ function Update() {
 	// Set rotation to the move direction
 	if (IsGrounded())
 	{
-		
 		transform.rotation = Quaternion.LookRotation(moveDirection);
-			
 	}	
 	else
 	{
