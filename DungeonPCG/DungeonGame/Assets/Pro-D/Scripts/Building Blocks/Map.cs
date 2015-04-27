@@ -10,10 +10,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-//initializes and holds map information (theme, size, the cells in it, 
-//whether it has been generated yet, the wind angle, and the rooms in it.
-//also provides a function to set all cells to unvisited.
-
 namespace ProD
 {
 	public class Map

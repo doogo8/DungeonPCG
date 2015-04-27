@@ -6,6 +6,9 @@ public var idleAnimation : AnimationClip;
 public var walkAnimation : AnimationClip;
 public var runAnimation : AnimationClip;
 public var jumpPoseAnimation : AnimationClip;
+public var sword1Animation : AnimationClip;
+public var sword2Animation : AnimationClip;
+public var sword3Animation : AnimationClip;
 
 public var walkMaxAnimationSpeed : float = 0.75;
 public var trotMaxAnimationSpeed : float = 1.0;
@@ -21,6 +24,9 @@ enum CharacterState {
 	Trotting = 2,
 	Running = 3,
 	Jumping = 4,
+	Sword1 = 5,
+	Sword2 = 6,
+	Sword3 = 7,
 }
 
 private var _characterState : CharacterState;
@@ -120,7 +126,10 @@ public var jumpPoseAnimation : AnimationClip;
 		_animation = null;
 		Debug.Log("No jump animation found and the character has canJump enabled. Turning off animations.");
 	}
-			
+	if(!sword1Animation || !sword2Animation || !sword3Animation) {
+		_animation = null;
+		Debug.Log("No attack animations found. Turning off animations.");
+	}
 }
 
 
@@ -157,7 +166,7 @@ function UpdateSmoothedMovementDirection ()
 	if (grounded)
 	{
 		// Lock camera for short period when transitioning moving & standing still
-		lockCameraTimer += Time.deltaTime;
+ 		lockCameraTimer += Time.deltaTime;
 		if (isMoving != wasMoving)
 			lockCameraTimer = 0.0;
 
@@ -169,13 +178,13 @@ function UpdateSmoothedMovementDirection ()
 			// If we are really slow, just snap to the target direction
 			if (moveSpeed < walkSpeed * 0.9 && grounded)
 			{
-				moveDirection = targetDirection.normalized;
+//				moveDirection = targetDirection.normalized;
+				moveDirection = Vector3.RotateTowards(moveDirection, targetDirection, rotateSpeed * Mathf.Deg2Rad * Time.deltaTime, 1000);
 			}
 			// Otherwise smoothly turn towards it
 			else
 			{
 				moveDirection = Vector3.RotateTowards(moveDirection, targetDirection, rotateSpeed * Mathf.Deg2Rad * Time.deltaTime, 1000);
-				
 				moveDirection = moveDirection.normalized;
 			}
 		}
@@ -353,6 +362,11 @@ function Update() {
 				
 			}
 		}
+		
+		if(Input.GetMouseButtonDown(0)){
+			_animation.CrossFade(sword1Animation.name);
+		}
+
 	}
 	// ANIMATION sector
 	

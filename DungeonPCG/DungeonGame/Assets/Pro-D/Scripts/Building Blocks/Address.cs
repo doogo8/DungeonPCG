@@ -10,8 +10,6 @@ using UnityEngine;
 using System;
 using System.Collections;
 
-//holds a pair of x,y coordinates to denote the location of something.
-
 namespace ProD
 {
 	public class Address
@@ -53,7 +51,6 @@ namespace ProD
 			else return false;
 		}
 
-		//which direction you have to go to get from a -> this address
 		public DirectionManager.Direction IsLocatedOn_AccordingToAddress(Address a)
 		{
 			int diff_X = _X - a.x;
