@@ -16,7 +16,6 @@ public class Goblin : Monster
 
 		attackAnimations.Add(_animation["axe attack"].clip);
 		attackAnimations.Add(_animation["spear attack"].clip);
-
 	}
 	
 }

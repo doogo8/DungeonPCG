@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class Monster : MonoBehaviour
 {
-	public class AttackType{
-		public const string Melee = "Melee";
-		public const string Ranged = "Ranged";
+	public enum AttackType{
+		Melee = 1,
+		Ranged = 2
 	}
 
 	public class Damage{
@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour
 	}
 
 	public class Health{
-		public const float Low = 10f;
+		public const float Low = 50f;
 		public const float Medium = 100f;
 		public const float High = 200f;
 	}
@@ -33,19 +33,20 @@ public class Monster : MonoBehaviour
 		public const float High = 10f;
 	}
 
-	public MonsterHitCube hitCube;
+	public GameObject hitCube;
 
 	public float currentHealth;
 	public float maxHealth;
 	public bool dead;
 	bool deathClipDone;
 	bool deathClipStarted;
+	public bool ableToBeHit;
 
 	public float aggroRange = 7f;
 	public float chaseSpeed = 0.6f;
 	public float roamSpeed = 0.06f;
 	public float attackDamage = 10f;
-	public string attackType;
+	public AttackType attackType;
 	
 	public GameObject player;
 	public AnimationClip idleAnimation;
@@ -64,7 +65,7 @@ public class Monster : MonoBehaviour
 	void Awake() {
 		_animation = GetComponent<Animation> ();
 		randomNearbyLocation = new Vector3 ();
-		hitCube = transform.Find("MonsterHitCube").gameObject.GetComponent<MonsterHitCube>();
+		hitCube = transform.Find("MonsterHitCube").gameObject;
 	}
 
 	void Update ()
@@ -166,6 +167,20 @@ public class Monster : MonoBehaviour
 			return false;
 	}
 
+	bool amIFacingPlayer(){
+		Collider[] hitColliders = Physics.OverlapSphere(hitCube.transform.position, 2f);
+		
+		int i = 0;
+		while (i < hitColliders.Length) {
+			if(hitColliders[i].gameObject.GetComponent<Player>() != null){
+				return true;
+			}
+			i++;
+		}
+
+		return false;
+	}
+
 	void attack ()
 	{
 		bool attackClipPlaying = false;
@@ -175,12 +190,12 @@ public class Monster : MonoBehaviour
 				attackClipPlaying = true;
 		}
 
-		if(haveLandedAHit == false && hitCube.monsterIsFacePlayer() && attackClipPlaying){
-			hitCube.player.currentHealth -= attackDamage;
+		if(haveLandedAHit == false && amIFacingPlayer() && attackClipPlaying){
+			player.GetComponent<Player>().currentHealth -= attackDamage;
 			haveLandedAHit = true;
 		}
 
-
+		transform.forward = Vector3.Lerp (transform.forward, (player.transform.position - transform.position), Time.deltaTime * 3f);
 		
 		if(!attackClipPlaying && haveLandedAHit){
 			haveLandedAHit = false;
