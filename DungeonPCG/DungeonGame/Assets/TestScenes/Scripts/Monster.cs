@@ -73,16 +73,20 @@ public class Monster : MonoBehaviour
 		checkForDeath();
 
 		if(!dead){
-			if(aggroingPlayer && !reachedPlayer()){
-				chase ();
-			}else if (aggroingPlayer && reachedPlayer()){
-				attack ();
-			}else if(!aggroingPlayer){
-				roam ();
-			}
+			if(player.GetComponent<Player>() != null){ //would mean player is dead
+				if(aggroingPlayer && !reachedPlayer()){
+					chase ();
+				}else if (aggroingPlayer && reachedPlayer()){
+					attack ();
+				}else if(!aggroingPlayer){
+					roam ();
+				}
 
-			if (spottedPlayer ()) {
-				aggroingPlayer = true;
+				if (spottedPlayer ()) {
+					aggroingPlayer = true;
+				}
+			}else{
+				roam ();
 			}
 		}else{
 			die();
@@ -212,6 +216,7 @@ public class Monster : MonoBehaviour
 
 		Vector3 moveDiff = targetPos - transform.position;
 		Vector3 movDir = moveDiff.normalized * speed * Time.deltaTime;
+
 		if(movDir.sqrMagnitude < moveDiff.sqrMagnitude)
 		{
 			GetComponent<CharacterController>().Move(movDir);
