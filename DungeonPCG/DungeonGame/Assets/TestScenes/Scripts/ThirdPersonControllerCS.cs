@@ -312,7 +312,7 @@ public AnimationClip jumpPoseAnimation;
 		// Move the controller
 		CharacterController controller = GetComponent<CharacterController>();
 		collisionFlags = controller.Move(movement);
-		
+
 		// ANIMATION sector
 		if(_animation) {
 			if(_characterState == CharacterState.Jumping)

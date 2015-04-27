@@ -4,16 +4,18 @@ using System.Collections.Generic;
 
 public class Goblin : Monster
 {
-
 	void Start ()
 	{
-		this.chaseSpeed = 0.1f;
-		this.roamSpeed = 0.05f;
-
-		_animation = GetComponent<Animation> ();
+		this.aggroRange = AggroRange.Low;
+		this.roamSpeed = Speed.Low;
+		this.chaseSpeed = Speed.Medium;
+		this.attackType = AttackType.Melee;
+		this.maxHealth = Health.Low;
+		this.currentHealth = Health.Low;
 
 		attackAnimations.Add(_animation["axe attack"].clip);
 		attackAnimations.Add(_animation["spear attack"].clip);
+
 	}
 	
 }

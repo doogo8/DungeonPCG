@@ -4,40 +4,76 @@ using System.Collections.Generic;
 
 public class Monster : MonoBehaviour
 {
-	private Collider[] hitColliders;
-	public GameObject player;
+	public class AttackType{
+		public const string Melee = "Melee";
+		public const string Ranged = "Ranged";
+	}
+
+	public class Damage{
+		public const float Low = 5f;
+		public const float Medium = 10f;
+		public const float High = 20f;
+	}
+
+	public class Speed{
+		public const float Low = 0.05f;
+		public const float Medium = 0.1f;
+		public const float High = 0.2f;
+	}
+
+	public class Health{
+		public const float Low = 50f;
+		public const float Medium = 100f;
+		public const float High = 200f;
+	}
+	
+	public class AggroRange{
+		public const float Low = 5f;
+		public const float Medium = 7f;
+		public const float High = 10f;
+	}
+
+	public float currentHealth;
+	public float maxHealth;
+
 	public float aggroRange = 7f;
 	public float chaseSpeed = 0.6f;
 	public float roamSpeed = 0.06f;
-	private bool playerInAggroRange;
+	public string attackType;
+	
+	public GameObject player;
 	public AnimationClip idleAnimation;
 	public AnimationClip walkAnimation;
 	public AnimationClip runAnimation;
 	public List<AnimationClip> attackAnimations;
 	public Animation _animation;
+
 	private bool arrivedAtRoamingDestination;
 	private Vector3 randomNearbyLocation;
+	private Collider[] hitColliders;
+	private bool aggroingPlayer;
 
-	void Start ()
-	{
+	void Awake() {
 		_animation = GetComponent<Animation> ();
 		randomNearbyLocation = new Vector3 ();
 	}
 
 	void Update ()
 	{
-		if (playerIsInAggroRange ()) {
-			if(!reachedPlayer()){
-				chase ();
-			}else{
-				attack ();
-			}
-		} else {
+		if(aggroingPlayer && !reachedPlayer()){
+			chase ();
+		}else if (aggroingPlayer && reachedPlayer()){
+			attack ();
+		}else if(!aggroingPlayer){
 			roam ();
+		}
+
+		if (spottedPlayer ()) {
+			aggroingPlayer = true;
 		}
 	}
 
-	bool playerIsInAggroRange ()
+	bool spottedPlayer ()
 	{
 		hitColliders = Physics.OverlapSphere (transform.position, aggroRange);
 		
@@ -95,9 +131,6 @@ public class Monster : MonoBehaviour
 		if(!attackClipPlaying){
 			_animation.CrossFade (attackAnimations[(int)Mathf.Floor(Random.Range(0f, (float)attackAnimations.Count))].name);
 		}
-
-
-
 	}
 	
 	void lerpTowardTargetLocation (Vector3 targetPos, float speed)
