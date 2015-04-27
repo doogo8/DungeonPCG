@@ -12,6 +12,7 @@ public class Goblin : Monster
 		this.attackType = AttackType.Melee;
 		this.maxHealth = Health.Low;
 		this.currentHealth = Health.Low;
+		this.attackDamage = Damage.Low;
 
 		attackAnimations.Add(_animation["axe attack"].clip);
 		attackAnimations.Add(_animation["spear attack"].clip);

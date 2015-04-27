@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
 	}
 
 	public class Damage{
-		public const float Low = 5f;
+		public const float Low = 2f;
 		public const float Medium = 10f;
 		public const float High = 20f;
 	}
@@ -33,12 +33,15 @@ public class Monster : MonoBehaviour
 		public const float High = 10f;
 	}
 
+	public MonsterHitCube hitCube;
+
 	public float currentHealth;
 	public float maxHealth;
 
 	public float aggroRange = 7f;
 	public float chaseSpeed = 0.6f;
 	public float roamSpeed = 0.06f;
+	public float attackDamage = 10f;
 	public string attackType;
 	
 	public GameObject player;
@@ -52,10 +55,12 @@ public class Monster : MonoBehaviour
 	private Vector3 randomNearbyLocation;
 	private Collider[] hitColliders;
 	private bool aggroingPlayer;
+	private bool haveLandedAHit;
 
 	void Awake() {
 		_animation = GetComponent<Animation> ();
 		randomNearbyLocation = new Vector3 ();
+		hitCube = transform.Find("MonsterHitCube").gameObject.GetComponent<MonsterHitCube>();
 	}
 
 	void Update ()
@@ -71,6 +76,7 @@ public class Monster : MonoBehaviour
 		if (spottedPlayer ()) {
 			aggroingPlayer = true;
 		}
+
 	}
 
 	bool spottedPlayer ()
@@ -126,6 +132,17 @@ public class Monster : MonoBehaviour
 		for(int i = 0; i < attackAnimations.Count; i++){
 			if(_animation.IsPlaying(attackAnimations[i].name))
 				attackClipPlaying = true;
+		}
+
+		if(haveLandedAHit == false && hitCube.monsterIsFacePlayer() && attackClipPlaying){
+			hitCube.player.currentHealth -= attackDamage;
+			haveLandedAHit = true;
+		}
+
+
+		
+		if(!attackClipPlaying && haveLandedAHit){
+			haveLandedAHit = false;
 		}
 
 		if(!attackClipPlaying){

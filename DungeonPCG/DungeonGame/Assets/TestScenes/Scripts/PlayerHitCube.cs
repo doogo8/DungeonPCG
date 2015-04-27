@@ -1,25 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HitCube : MonoBehaviour {
-	private bool facingMonster;
+public class PlayerHitCube : MonoBehaviour {
+	private bool facingEnemy;
 	public Monster monster;
 	
 	void OnTriggerStay(Collider other){
 		if(other.gameObject.tag == "Monster"){
-			facingMonster = true;
+			facingEnemy = true;
 			monster = other.gameObject.GetComponent<Monster>();
 		}
 	}
 	
 	void OnTriggerExit(Collider other){
 		if(other.gameObject.tag == "Monster"){
-			facingMonster = false;
-			monster = null;
+			facingEnemy = false;
 		}
 	}
 
 	public bool playerIsFaceMonster(){
-		return facingMonster;
+		return facingEnemy;
 	}
 }

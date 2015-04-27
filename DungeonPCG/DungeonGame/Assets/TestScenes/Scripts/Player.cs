@@ -4,11 +4,13 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public float maxHealth;
 	public float currentHealth;
-	public HitCube hitCube;
+	public PlayerHitCube hitCube;
 	bool haveLandedAHit;
 
 	void Start () {
-		hitCube = transform.Find("HitCube").gameObject.GetComponent<HitCube>();
+		hitCube = transform.Find("PlayerHitCube").gameObject.GetComponent<PlayerHitCube>();
+		maxHealth = 100f;
+		currentHealth = 100f;
 	}
 
 	void Update(){
