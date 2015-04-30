@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace ProD{
 public class SmoothFollow : MonoBehaviour
@@ -26,6 +27,9 @@ public class SmoothFollow : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+			if(GameObject.Find("adventurer(Clone)") != null){
+				target = GameObject.Find("adventurer(Clone)").transform;
+			}
 	}
 
 	// Update is called once per frame

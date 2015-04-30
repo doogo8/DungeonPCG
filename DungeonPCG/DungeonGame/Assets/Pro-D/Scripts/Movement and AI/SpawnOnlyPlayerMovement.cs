@@ -5,7 +5,6 @@ namespace ProD
 {
 	public class SpawnOnlyPlayerMovement : PlayerMovement
 	{
-
 		public override void SetupPlayer(WorldMap newWorld)
 		{
 			SetupPlayer(newWorld, new Address(0, 0), null);
@@ -13,7 +12,6 @@ namespace ProD
 
 		public override void SetupPlayer(WorldMap newWorld, Address mapAdress, Address spawnPoint)
 		{
-			Camera.main.GetComponent<SmoothFollow>().target = this.gameObject.transform;
 
 
 			if (newWorld.maps == null || newWorld.size_X <= 0 || newWorld.size_Y <= 0)
