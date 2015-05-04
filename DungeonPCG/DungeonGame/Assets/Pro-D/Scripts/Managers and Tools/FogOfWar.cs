@@ -122,6 +122,7 @@ namespace ProD
 
 		public void UpdateFoW(Address playerPosition)
 		{
+
 			if (fogOfWarPlane == null) return;
 
 			//GenerateFog(map);

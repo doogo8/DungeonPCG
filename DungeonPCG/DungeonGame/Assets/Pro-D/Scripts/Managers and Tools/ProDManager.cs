@@ -27,11 +27,13 @@ namespace ProD
 						set { _PlayerPrefabName = value; }
 				}
 
-				private GameObject playerGO;
+				
+				public GameObject playerGO;
 				private List<GameObject> enemyGOs = new List<GameObject> ();
 				private List<GameObject> healthGOs = new List<GameObject> ();
 				private List<GameObject> trapGOs = new List<GameObject> ();
 				private List<GameObject> treasureGOs = new List<GameObject> ();
+
 				private int _seed = 0;
 
 				public int Seed {

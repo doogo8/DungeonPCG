@@ -14,7 +14,10 @@ namespace ProD{
 		}
 		
 		void Update () {
-			healthBar.value = (player.currentHealth / player.maxHealth);
+			if (player == null) {
+				player = GameObject.Find ("ai-test-adventurer(Clone)").GetComponent("Player") as Player;
+			}
+			else healthBar.value = (player.currentHealth / player.maxHealth);
 		}
 	}
 }
