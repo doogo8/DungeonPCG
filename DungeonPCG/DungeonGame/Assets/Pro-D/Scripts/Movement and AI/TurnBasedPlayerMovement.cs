@@ -15,7 +15,7 @@ using System.Collections.Generic;
 
 namespace ProD
 {
-	public class TurnBasedPlayerMovement : PlayerMovement, TurnBasedActor
+	public class TurnBasedPlayerMovement : Movement, TurnBasedActor
 	{
 		private bool isMyTurn = false;
 
@@ -39,9 +39,9 @@ namespace ProD
 		/// <param name='newWorld'>
 		/// The world to put the player in.
 		/// </param>
-		public override void SetupPlayer(WorldMap newWorld)
+		public override void Setup(WorldMap newWorld)
 		{
-			SetupPlayer(newWorld, new Address(0, 0), null);
+			Setup(newWorld, new Address(0, 0), null);
 		}
 
 		/// <summary>
@@ -56,7 +56,7 @@ namespace ProD
 		/// <param name='spawnPoint'>
 		/// The address in the map the player is spawned at. If its null, the player will spawn at a random spot.
 		/// </param>
-		public override void SetupPlayer(WorldMap newWorld, Address mapAdress, Address spawnPoint)
+		public override void Setup(WorldMap newWorld, Address mapAdress, Address spawnPoint)
 		{
 			if (newWorld.maps == null || newWorld.size_X <= 0 || newWorld.size_Y <= 0)
 				return;

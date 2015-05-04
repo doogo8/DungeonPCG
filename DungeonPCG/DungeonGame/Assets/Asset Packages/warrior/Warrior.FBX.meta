@@ -3,9 +3,106 @@ guid: 2cbece7f68145db40a91ef523e6f0e6d
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: Bip04 Head
+    100002: Bip04 L Calf
+    100004: Bip04 L Clavicle
+    100006: Bip04 L Finger0
+    100008: Bip04 L Finger01
+    100010: Bip04 L Finger02
+    100012: Bip04 L Finger1
+    100014: Bip04 L Finger11
+    100016: Bip04 L Finger12
+    100018: Bip04 L Foot
+    100020: Bip04 L Forearm
+    100022: Bip04 L Hand
+    100024: Bip04 L Thigh
+    100026: Bip04 L UpperArm
+    100028: Bip04 Neck
+    100030: Bip04 Pelvis
+    100032: Bip04 R Calf
+    100034: Bip04 R Clavicle
+    100036: Bip04 R Finger0
+    100038: Bip04 R Finger01
+    100040: Bip04 R Finger02
+    100042: Bip04 R Finger1
+    100044: Bip04 R Finger11
+    100046: Bip04 R Finger12
+    100048: Bip04 R Foot
+    100050: Bip04 R Forearm
+    100052: Bip04 R Hand
+    100054: Bip04 R Thigh
+    100056: Bip04 R UpperArm
+    100058: Bip04 Spine
+    100060: Bip04 Spine1
+    100062: Bip_NPC_Warior
+    100064: NPS_warior_body
+    100066: NPS_warior_sheld
+    100068: NPS_warior_sword_01
+    100070: //RootNode
+    400000: Bip04 Head
+    400002: Bip04 L Calf
+    400004: Bip04 L Clavicle
+    400006: Bip04 L Finger0
+    400008: Bip04 L Finger01
+    400010: Bip04 L Finger02
+    400012: Bip04 L Finger1
+    400014: Bip04 L Finger11
+    400016: Bip04 L Finger12
+    400018: Bip04 L Foot
+    400020: Bip04 L Forearm
+    400022: Bip04 L Hand
+    400024: Bip04 L Thigh
+    400026: Bip04 L UpperArm
+    400028: Bip04 Neck
+    400030: Bip04 Pelvis
+    400032: Bip04 R Calf
+    400034: Bip04 R Clavicle
+    400036: Bip04 R Finger0
+    400038: Bip04 R Finger01
+    400040: Bip04 R Finger02
+    400042: Bip04 R Finger1
+    400044: Bip04 R Finger11
+    400046: Bip04 R Finger12
+    400048: Bip04 R Foot
+    400050: Bip04 R Forearm
+    400052: Bip04 R Hand
+    400054: Bip04 R Thigh
+    400056: Bip04 R UpperArm
+    400058: Bip04 Spine
+    400060: Bip04 Spine1
+    400062: Bip_NPC_Warior
+    400064: NPS_warior_body
+    400066: NPS_warior_sheld
+    400068: NPS_warior_sword_01
+    400070: //RootNode
+    2300000: NPS_warior_sheld
+    2300002: NPS_warior_sword_01
+    3300000: NPS_warior_sheld
+    3300002: NPS_warior_sword_01
     4300000: NPS_warior_body
     4300002: NPS_warior_sheld
     4300004: NPS_warior_sword_01
+    7400000: NPS_Warr_War_cry
+    7400002: NPS_Warr_combat_mod
+    7400004: NPS_Warr_dead-on-back
+    7400006: NPS_Warr_dodge
+    7400008: NPS_Warr_dying_belt
+    7400010: NPS_Warr_falling_coming_up_basic
+    7400012: NPS_Warr_flinch_back
+    7400014: NPS_Warr_flinch_front
+    7400016: NPS_Warr_flinch_left
+    7400018: NPS_Warr_flinch_right
+    7400020: NPS_Warr_Up_Down_blow
+    7400022: NPS_Warr_Heroic_blow
+    7400024: NPS_Warr_right_blow
+    7400026: NPS_Warr_shield_blow
+    7400028: NPS_Warr_shield_block
+    7400030: NPS_Warr_Jump
+    7400032: NPS_Warr_run
+    7400034: NPS_Warr_staying_01
+    7400036: NPS_Warr_walk
+    11100000: //RootNode
+    13700000: NPS_warior_body
   materials:
     importMaterials: 1
     materialName: 3
@@ -15,7 +112,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    pivotNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -558,3 +654,4 @@ ModelImporter:
   additionalBone: 0
   userData: 
   assetBundleName: 
+  assetBundleVariant: 

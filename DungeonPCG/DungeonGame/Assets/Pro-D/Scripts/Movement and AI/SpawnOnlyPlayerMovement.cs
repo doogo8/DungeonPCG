@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace ProD
 {
-	public class SpawnOnlyPlayerMovement : PlayerMovement
+	public class SpawnOnlyPlayerMovement : Movement
 	{
-		public override void SetupPlayer(WorldMap newWorld)
+		public override void Setup(WorldMap newWorld)
 		{
-			SetupPlayer(newWorld, new Address(0, 0), null);
+			Setup(newWorld, new Address(0, 0), null);
 		}
 
-		public override void SetupPlayer(WorldMap newWorld, Address mapAdress, Address spawnPoint)
+		public override void Setup(WorldMap newWorld, Address mapAdress, Address spawnPoint)
 		{
 
 

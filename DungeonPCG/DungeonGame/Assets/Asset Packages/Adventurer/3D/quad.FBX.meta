@@ -3,7 +3,12 @@ guid: 14908740aa0cd8249ba932beaefd6248
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Plane01
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 3
@@ -13,7 +18,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    pivotNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -62,3 +66,4 @@ ModelImporter:
   additionalBone: 0
   userData: 
   assetBundleName: 
+  assetBundleVariant: 

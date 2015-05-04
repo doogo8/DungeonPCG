@@ -129,6 +129,7 @@ ModelImporter:
     7400002: run fast
     11100000: //RootNode
     13700000: Base HumanPelvis
+    13700002: villager_male_strong_body
     100100000: DataTemplate __Singleton__
   materials:
     importMaterials: 0
@@ -139,7 +140,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    pivotNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -214,3 +214,4 @@ ModelImporter:
   additionalBone: 0
   userData: 
   assetBundleName: 
+  assetBundleVariant: 

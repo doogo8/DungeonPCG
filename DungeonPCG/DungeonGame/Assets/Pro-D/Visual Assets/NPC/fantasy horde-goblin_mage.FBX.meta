@@ -3,6 +3,174 @@ guid: 7dd68a3c84641e9428e9b1214c4bdf20
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: bip_gob_mag
+    100002: bip_gob_magHead
+    100004: bip_gob_magHeadBone001
+    100006: bip_gob_magHeadBone002
+    100008: bip_gob_magLCalf
+    100010: bip_gob_magLCollarbone
+    100012: bip_gob_magLDigit11
+    100014: bip_gob_magLDigit11 1
+    100016: bip_gob_magLDigit12
+    100018: bip_gob_magLDigit21
+    100020: bip_gob_magLDigit22
+    100022: bip_gob_magLDigit31
+    100024: bip_gob_magLDigit32
+    100026: bip_gob_magLFoot
+    100028: bip_gob_magLForearm
+    100030: bip_gob_magLIKTarget
+    100032: bip_gob_magLPalm
+    100034: bip_gob_magLPlatform
+    100036: bip_gob_magLThigh
+    100038: bip_gob_magLUpperarm
+    100040: bip_gob_magNeck1
+    100042: bip_gob_magNeck2
+    100044: bip_gob_magPelvis
+    100046: bip_gob_magRCalf
+    100048: bip_gob_magRCollarbone
+    100050: bip_gob_magRDigit11
+    100052: bip_gob_magRDigit11 1
+    100054: bip_gob_magRDigit12
+    100056: bip_gob_magRDigit21
+    100058: bip_gob_magRDigit22
+    100060: bip_gob_magRDigit31
+    100062: bip_gob_magRDigit32
+    100064: bip_gob_magRFoot
+    100066: bip_gob_magRForearm
+    100068: bip_gob_magRibcage
+    100070: bip_gob_magRIKTarget
+    100072: bip_gob_magRPalm
+    100074: bip_gob_magRPlatform
+    100076: bip_gob_magRThigh
+    100078: bip_gob_magRUpperarm
+    100080: bip_gob_magSpine1
+    100082: bip_gob_magSpine2
+    100084: bip_gob_magSpine3
+    100086: bip_gob_magSpine4
+    100088: bon_gob_mag_cloth00
+    100090: bon_gob_mag_cloth01
+    100092: bon_gob_mag_ear L
+    100094: bon_gob_mag_ear R
+    100096: bon_gob_mag_ear R_tip
+    100098: bon_gob_mag_ear R_tip 1
+    100100: bon_gob_mag_face
+    100102: bon_gob_mag_hair
+    100104: bon_gob_mag_hair_tip
+    100106: bon_gob_mag_jaw
+    100108: bon_gob_mag_jaw_tip
+    100110: bon_gob_nag_cloth_tip
+    100112: bon_gob_war_mag_tip
+    100114: //RootNode
+    100116: goblin mage
+    100118: goblin mage armor
+    100120: goblin mage boot A
+    100122: goblin mage boot B
+    100124: goblin mage cap
+    100126: goblin mage hair
+    100128: goblin mage mask
+    100130: goblin mage mohican
+    100132: goblin mage ponny tail
+    100134: goblin mage skull
+    100136: goblin mage staff A
+    100138: goblin mage staff B
+    100140: goblin mage staff C
+    100142: goblin mage wrist armor L
+    100144: goblin mage wrist armor R
+    100146: goblin mage wrist armor R001
+    400000: bip_gob_mag
+    400002: bip_gob_magHead
+    400004: bip_gob_magHeadBone001
+    400006: bip_gob_magHeadBone002
+    400008: bip_gob_magLCalf
+    400010: bip_gob_magLCollarbone
+    400012: bip_gob_magLDigit11
+    400014: bip_gob_magLDigit11 1
+    400016: bip_gob_magLDigit12
+    400018: bip_gob_magLDigit21
+    400020: bip_gob_magLDigit22
+    400022: bip_gob_magLDigit31
+    400024: bip_gob_magLDigit32
+    400026: bip_gob_magLFoot
+    400028: bip_gob_magLForearm
+    400030: bip_gob_magLIKTarget
+    400032: bip_gob_magLPalm
+    400034: bip_gob_magLPlatform
+    400036: bip_gob_magLThigh
+    400038: bip_gob_magLUpperarm
+    400040: bip_gob_magNeck1
+    400042: bip_gob_magNeck2
+    400044: bip_gob_magPelvis
+    400046: bip_gob_magRCalf
+    400048: bip_gob_magRCollarbone
+    400050: bip_gob_magRDigit11
+    400052: bip_gob_magRDigit11 1
+    400054: bip_gob_magRDigit12
+    400056: bip_gob_magRDigit21
+    400058: bip_gob_magRDigit22
+    400060: bip_gob_magRDigit31
+    400062: bip_gob_magRDigit32
+    400064: bip_gob_magRFoot
+    400066: bip_gob_magRForearm
+    400068: bip_gob_magRibcage
+    400070: bip_gob_magRIKTarget
+    400072: bip_gob_magRPalm
+    400074: bip_gob_magRPlatform
+    400076: bip_gob_magRThigh
+    400078: bip_gob_magRUpperarm
+    400080: bip_gob_magSpine1
+    400082: bip_gob_magSpine2
+    400084: bip_gob_magSpine3
+    400086: bip_gob_magSpine4
+    400088: bon_gob_mag_cloth00
+    400090: bon_gob_mag_cloth01
+    400092: bon_gob_mag_ear L
+    400094: bon_gob_mag_ear R
+    400096: bon_gob_mag_ear R_tip
+    400098: bon_gob_mag_ear R_tip 1
+    400100: bon_gob_mag_face
+    400102: bon_gob_mag_hair
+    400104: bon_gob_mag_hair_tip
+    400106: bon_gob_mag_jaw
+    400108: bon_gob_mag_jaw_tip
+    400110: bon_gob_nag_cloth_tip
+    400112: bon_gob_war_mag_tip
+    400114: //RootNode
+    400116: goblin mage
+    400118: goblin mage armor
+    400120: goblin mage boot A
+    400122: goblin mage boot B
+    400124: goblin mage cap
+    400126: goblin mage hair
+    400128: goblin mage mask
+    400130: goblin mage mohican
+    400132: goblin mage ponny tail
+    400134: goblin mage skull
+    400136: goblin mage staff A
+    400138: goblin mage staff B
+    400140: goblin mage staff C
+    400142: goblin mage wrist armor L
+    400144: goblin mage wrist armor R
+    400146: goblin mage wrist armor R001
+    2300000: goblin mage armor
+    2300002: goblin mage hair
+    2300004: goblin mage mask
+    2300006: goblin mage mohican
+    2300008: goblin mage skull
+    2300010: goblin mage staff A
+    2300012: goblin mage staff B
+    2300014: goblin mage staff C
+    2300016: goblin mage wrist armor L
+    2300018: goblin mage wrist armor R001
+    3300000: goblin mage armor
+    3300002: goblin mage hair
+    3300004: goblin mage mask
+    3300006: goblin mage mohican
+    3300008: goblin mage skull
+    3300010: goblin mage staff A
+    3300012: goblin mage staff B
+    3300014: goblin mage staff C
+    3300016: goblin mage wrist armor L
+    3300018: goblin mage wrist armor R001
     4300000: goblin mage wrist armor L
     4300002: goblin mage staff A
     4300004: goblin mage staff B
@@ -18,6 +186,32 @@ ModelImporter:
     4300024: goblin mage boot A
     4300026: goblin mage boot B
     4300028: goblin mage ponny tail
+    7400000: idle
+    7400002: idle break 1
+    7400004: idle break 2
+    7400006: salute
+    7400008: jump simple
+    7400010: walk
+    7400012: run
+    7400014: run fast
+    7400016: 'crouch '
+    7400018: crouch walk
+    7400020: hit front
+    7400022: hit back
+    7400024: jump complete
+    7400026: falling
+    7400028: die
+    7400030: idle fight
+    7400032: idle break fight
+    7400034: axe attack
+    7400036: casting A
+    7400038: casting B
+    11100000: //RootNode
+    13700000: goblin mage
+    13700002: goblin mage boot A
+    13700004: goblin mage boot B
+    13700006: goblin mage cap
+    13700008: goblin mage ponny tail
   materials:
     importMaterials: 1
     materialName: 3
@@ -27,7 +221,6 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    pivotNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -596,3 +789,4 @@ ModelImporter:
   additionalBone: 0
   userData: 
   assetBundleName: 
+  assetBundleVariant: 

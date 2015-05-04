@@ -25,6 +25,10 @@ namespace ProD
 				public bool showGUI = true;
 				public GameObject player2DPrefab;
 				public GameObject player3DPrefab;
+				public GameObject[] enemyPrefabs;
+				public GameObject chestPrefab;
+				public GameObject healthPrefab;
+				public GameObject trapPrefab;
 				public GameObject cameraGO;
 				public WorldMap worldMap;
 				private Texture mapTexture;
@@ -863,7 +867,10 @@ namespace ProD
 								ProDManager.Instance.ApplySeed ();
 					//to spawn the player, only one simple call has to be done
 								ProDManager.Instance.SpawnPlayer (player3DPrefab, worldMap);
-//					ProDManager.Instance.SpawnEnemies();
+								ProDManager.Instance.SpawnEnemies(enemyPrefabs, worldMap, enemy_frequency, enemy_variety);
+								ProDManager.Instance.SpawnHealth(healthPrefab, worldMap, health_frequency);
+								ProDManager.Instance.SpawnTreasure(chestPrefab, worldMap, chest_frequency);
+								ProDManager.Instance.SpawnTraps(trapPrefab, worldMap, trap_frequency);
 								break;
 
 						default:
