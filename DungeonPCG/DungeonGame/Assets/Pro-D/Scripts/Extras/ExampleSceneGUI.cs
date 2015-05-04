@@ -19,6 +19,14 @@ namespace ProD
 {
 		public class ExampleSceneGUI : MonoBehaviour
 		{
+
+		GameObject playerHealth;
+
+		void Start() {
+			playerHealth = GameObject.Find ("ScreenUI");
+			playerHealth.SetActive (false);
+		}
+
 				public GUISkin skin;
 				public Texture logo;
 				public Texture logo_bg;
@@ -881,6 +889,7 @@ namespace ProD
 								ProDManager.Instance.ApplySeed ();
 					//to spawn the player, only one simple call has to be done
 								ProDManager.Instance.SpawnPlayer (player3DPrefab, worldMap);
+								playerHealth.SetActive (true);
 //					ProDManager.Instance.SpawnEnemies();
 								break;
 

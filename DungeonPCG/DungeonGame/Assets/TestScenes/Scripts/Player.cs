@@ -30,6 +30,7 @@ namespace ProD
 			maxHealth = 100f;
 			currentHealth = 100f;
 			deathClipDone = false;
+			GameObject.Find ("ScreenUI").SetActive (true);
 		}
 	
 		void Update ()

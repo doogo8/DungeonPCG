@@ -39,6 +39,9 @@ public class SmoothFollow : MonoBehaviour
 		if(GameObject.Find("ai-test-adventurer(Clone)") != null){
 			target = GameObject.Find("ai-test-adventurer(Clone)").transform;
 		}
+			if(GameObject.Find("ai-test-adventurer w_UI(Clone)") != null){
+				target = GameObject.Find("ai-test-adventurer w_UI(Clone)").transform;
+		}
 
 		// Early out if we don't have a target
 		if (!target)
