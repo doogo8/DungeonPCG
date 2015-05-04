@@ -31,7 +31,7 @@ namespace ProD
 			set { _PlayerPrefabName = value; }
 		}
 
-		private GameObject playerGO;
+		public GameObject playerGO;
 
 		private int _seed = 0;
 		public int Seed

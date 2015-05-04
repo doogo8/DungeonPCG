@@ -314,7 +314,7 @@ namespace ProD
 				/// </summary>
 				void OnGUI ()
 				{
-						playerType = PlayerType.Player3D;
+//						playerType = PlayerType.Player3D;
 						bool needsRematerialize = false;
 
 						blockedLineStart = -1;
@@ -451,6 +451,7 @@ namespace ProD
 								case PlayerType.None2D:
 										break;
 								case PlayerType.Player2D:
+
 										if (themes.Count == 0) {
 												Debug.Log ("There are no 2D Themes assigned." + Environment.NewLine + "Create some and assign them in the ExampeSceneGUI object.");
 												playerType = PlayerType.Player3D;
@@ -476,6 +477,7 @@ namespace ProD
 												Debug.Log ("There are no 3D Themes assigned." + Environment.NewLine + "Create some and assign them in the ExampeSceneGUI object.");
 												playerType = PlayerType.None2D;
 										}
+
 										break;
 								default:
 										break;
@@ -862,6 +864,19 @@ namespace ProD
 								break;
 
 						case PlayerType.Player3D:
+//				if (useFow) {
+//					//if we choose to use the fog of war, we need to set the parameters, and then just call the init method
+//					applyFowSettings ();
+//					ProDManager.Instance.getFogOfWar ().InitFoW (worldMap.maps [0, 0]);
+//				}
+//				
+//				if (usePathfinding) {
+//					//if we choose to use the pathfinding, we need to set the parameters, and then just call the init method
+//					applyPathfindingSettings ();
+//					ProDManager.Instance.getPathfinding ().InitPathfinding (worldMap.maps [0, 0]);
+//				}
+
+
 					//reapply the seed to ensure that player spawns at same position every time we materialise a world created with a seed
 								ProDManager.Instance.ApplySeed ();
 					//to spawn the player, only one simple call has to be done

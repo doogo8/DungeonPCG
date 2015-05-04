@@ -195,8 +195,12 @@ namespace ProD
 							((limitedTo == LimitedTo.VisitedOnly && fogOfWar.FogTexture.GetPixel(idxX, idxY).Equals(fogOfWar.unvisited))
 							|| limitedTo == LimitedTo.VisibleOnly && !fogOfWar.FogTexture.GetPixel(idxX, idxY).Equals(fogOfWar.visible)))
 					{
+
 						idxX = lastPlayerPosition.x;
 						idxY = lastPlayerPosition.y;
+
+						print(ProDManager.Instance.playerGO.name);
+//						print (idxX + ", " + idxY);
 					}
 
 					if (idxX != targetX || idxY != targetY) //Only update pathfinding when there is a change
