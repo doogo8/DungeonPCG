@@ -314,6 +314,7 @@ namespace ProD
 				/// </summary>
 				void OnGUI ()
 				{
+						playerType = PlayerType.Player3D;
 						bool needsRematerialize = false;
 
 						blockedLineStart = -1;
@@ -367,6 +368,8 @@ namespace ProD
 
 										materialize ();
 								}
+								isSplashShowing = false;
+								materialize ();
 								GUI.color = Color.white;
 
 								return;
