@@ -26,14 +26,12 @@ namespace ProD
 						get { return _PlayerPrefabName; }
 						set { _PlayerPrefabName = value; }
 				}
-
 				
 				public GameObject playerGO;
 				private List<GameObject> enemyGOs = new List<GameObject> ();
 				private List<GameObject> healthGOs = new List<GameObject> ();
 				private List<GameObject> trapGOs = new List<GameObject> ();
-				private List<GameObject> treasureGOs = new List<GameObject> ();
-
+				private List<GameObject> chestGOs = new List<GameObject> ();
 				private int _seed = 0;
 
 				public int Seed {
@@ -148,14 +146,13 @@ namespace ProD
 								if (i < enemyPrefabs.Length) {
 										for (int j = 0; j < enemy_frequency; j++) {
 												GameObject enemyGO = (GameObject)Instantiate (enemyPrefabs [i]);
-												Goblin goblin = enemyGO.GetComponent<Goblin>();
-												goblin.player = GameObject.Find("ai-test-adventurer(Clone)");
+												Goblin goblin = enemyGO.GetComponent<Goblin> ();
+												goblin.player = GameObject.Find ("ai-test-adventurer(Clone)");
 												Movement enemyMovement = enemyGO.GetComponent<Movement> ();
 												if (enemyMovement) {
 														enemyMovement.Setup (world);
 												}
 												enemyGOs.Add (enemyGO);
-
 												
 										}
 								}
@@ -165,17 +162,39 @@ namespace ProD
 		
 				public void SpawnTreasure (GameObject treasurePrefab, WorldMap world, int chest_frequency)
 				{
-
+						for (int i = 0; i < chest_frequency; i++) {
+								GameObject chestGO = (GameObject)Instantiate (treasurePrefab);
+								Movement chestMovement = chestGO.GetComponent<Movement> ();
+								if (chestMovement) {
+										chestMovement.Setup (world);
+								}
+								chestGOs.Add (chestGO);
+						}
+							
 				}
 
 				public void SpawnHealth (GameObject healthPrefab, WorldMap world, int health_frequency)
 				{
-
+						for (int i = 0; i < health_frequency; i++) {
+								GameObject healthGO = (GameObject)Instantiate (healthPrefab);
+								Movement healthMovement = healthGO.GetComponent<Movement> ();
+								if (healthMovement) {
+										healthMovement.Setup (world);
+								}
+								healthGOs.Add (healthGO);
+						}
 				}
 
 				public void SpawnTraps (GameObject trapPrefab, WorldMap world, int trap_frequnecy)
 				{
-			
+						for (int i = 0; i < trap_frequnecy; i++) {
+								GameObject trapGO = (GameObject)Instantiate (trapPrefab);
+								Movement trapMovement = trapGO.GetComponent<Movement> ();
+								if (trapMovement) {
+										trapMovement.Setup (world);
+								}
+								trapGOs.Add (trapGO);
+						}
 				}
 
 				public FogOfWar getFogOfWar ()

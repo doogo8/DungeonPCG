@@ -14,7 +14,7 @@ namespace ProD
 {
 	public abstract class MovingObject : MonoBehaviour
 	{
-		public float layer = 0.5f;
+		public float layer = 0.01f;
 
 		public List<string> walkableCellTypes;
 
