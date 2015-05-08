@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +11,8 @@ namespace ProD
 		public Animation _animation;
 		public float maxHealth;
 		public float currentHealth;
+		private int currentCoins;
+		private Text coinUI;
 		public GameObject hitCube;
 		public List<Monster> hitList;
 		bool haveLandedAHit;
@@ -31,10 +34,17 @@ namespace ProD
 			currentHealth = 100f;
 			deathClipDone = false;
 			GameObject.Find ("ScreenUI").SetActive (true);
+			//Try and access the coin UI object, if it doesn't exist print an error
+			coinUI = GameObject.Find("CoinCount").GetComponent<Text>();
+			if(coinUI == null)
+				Debug.Log ("No coin UI object found in scene, must be named 'CoinCount' and have a 'Text' Component attached");
+			//Call collectCoins with value of 0 to initialize the coins ui
+			collectCoins(0);
 		}
 	
 		void Update ()
 		{
+
 			checkForDeath ();
 		
 			if (!dead) {
@@ -119,5 +129,10 @@ namespace ProD
 			}
 		}
 	
+		//Updates the value stored in 'currentCoins' and also updates the UI
+		public void collectCoins(int numCoins) {
+			currentCoins += numCoins;
+			coinUI.text = currentCoins.ToString();
+		}
 	}
 }
