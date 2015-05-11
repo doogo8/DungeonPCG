@@ -29,6 +29,7 @@ namespace ProD
 		{	
 			audioSource = GetComponent<AudioSource> ();
 			hitCube = transform.Find ("PlayerHitCube").gameObject;
+			//hitCube.transform.localScale = new Vector3 (.04f, .04f, .04f);
 			_animation = GetComponent<Animation> ();
 			maxHealth = 100f;
 			currentHealth = 100f;
@@ -117,7 +118,7 @@ namespace ProD
 	
 		void collectMonstersImFacing ()
 		{
-			Collider[] hitColliders = Physics.OverlapSphere (hitCube.transform.position, 2f);
+			Collider[] hitColliders = Physics.OverlapSphere (hitCube.transform.position, .25f); //reduced attack range of player -Bryan
 			hitList.Clear ();
 		
 			int i = 0;
@@ -133,6 +134,18 @@ namespace ProD
 		public void collectCoins(int numCoins) {
 			currentCoins += numCoins;
 			coinUI.text = currentCoins.ToString();
+		}
+
+		//Checks if health is full
+		public bool healthIsFull() {
+			return currentHealth == maxHealth;
+		}
+
+		//Adds an amount of health to the player
+		public void addHealth(float amount) {
+			currentHealth += amount;
+			if(currentHealth > maxHealth)
+				currentHealth = maxHealth;
 		}
 	}
 }

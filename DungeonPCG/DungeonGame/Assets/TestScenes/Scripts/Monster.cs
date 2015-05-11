@@ -67,6 +67,7 @@ namespace ProD{
 			_animation = GetComponent<Animation> ();
 			randomNearbyLocation = new Vector3 ();
 			hitCube = transform.Find("MonsterHitCube").gameObject;
+			//hitCube.transform.localScale = new Vector3 (.04f, .04f, .04f);
 		}
 
 		void Update ()
@@ -165,8 +166,8 @@ namespace ProD{
 
 		bool reachedPlayer ()
 		{
-			if (Mathf.Abs (player.transform.position.x - transform.position.x) < 2f
-				&& Mathf.Abs (player.transform.position.z - transform.position.z) < 2f)
+			if (Mathf.Abs (player.transform.position.x - transform.position.x) < .4f
+				&& Mathf.Abs (player.transform.position.z - transform.position.z) < .4f) //reduced the distance necessary for enemy to start attacking - Bryan
 				return true;
 			else
 				return false;
