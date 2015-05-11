@@ -24,6 +24,8 @@ namespace ProD
 		private AudioSource audioSource;
 		private float lowPitchRange = .75F;
 		private float highPitchRange = 1.5F;
+
+		public int totalDamageToEnemies;
 	
 		void Start ()
 		{	
@@ -54,6 +56,7 @@ namespace ProD
 				if (haveLandedAHit == false && amAttacking () && hitList.Count > 0) {
 					foreach (Monster m in hitList) {
 						m.currentHealth -= 10;
+						totalDamageToEnemies += 10;
 					}
 					audioSource.pitch = Random.Range (lowPitchRange, highPitchRange);
 					audioSource.PlayOneShot (hitSound, 1f);
