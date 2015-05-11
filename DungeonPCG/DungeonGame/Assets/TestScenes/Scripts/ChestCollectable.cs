@@ -13,13 +13,13 @@ namespace ProD
 		void Start () {
 			chestAnim = gameObject.GetComponent<Animation>();
 			chestAnim.Play("open");
+			chestAnim.Sample();
 			chestAnim.Stop();
-		//	chestAnim.
 		}
 		
 		// Update is called once per frame
 		void Update () {
-		
+
 		}
 
 		void OnTriggerEnter(Collider other) {

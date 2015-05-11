@@ -23,6 +23,8 @@ public class ThirdPersonControllerCS : MonoBehaviour {
 	public bool attacking;
 	
 	private Animation _animation;
+
+	public int numJumps = 0;
 	
 	enum CharacterState {
 		Idle = 0,
@@ -256,7 +258,7 @@ public AnimationClip jumpPoseAnimation;
 		if (IsGrounded()) {
 			// Jump
 			// - Only when pressing the button down
-			// - With a timeout so you can press the button slightly before landing    
+			// - With a timeout so you can press the button slightly before landing
 			if (canJump && Time.time < lastJumpButtonTime + jumpTimeout) {
 				verticalSpeed = CalculateJumpVerticalSpeed (jumpHeight);
 				SendMessage("DidJump", SendMessageOptions.DontRequireReceiver);
@@ -294,6 +296,7 @@ public AnimationClip jumpPoseAnimation;
 		lastJumpTime = Time.time;
 		lastJumpStartHeight = transform.position.y;
 		lastJumpButtonTime = -10;
+		numJumps++;
 		
 		_characterState = CharacterState.Jumping;
 	}
