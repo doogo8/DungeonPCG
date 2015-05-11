@@ -300,6 +300,11 @@ public AnimationClip jumpPoseAnimation;
 		
 		_characterState = CharacterState.Jumping;
 	}
+
+	int getNumJumps() {
+		return numJumps;
+	}
+
 	void  Update (){
 		
 		if (!isControllable)
