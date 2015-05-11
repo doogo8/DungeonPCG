@@ -6,7 +6,6 @@ namespace ProD
 
 	public class ChestCollectable : MonoBehaviour {
 	
-		public int coinAmount = 5;	//amount of coins gained from this chest
 		Animation chestAnim;
 
 		// Use this for initialization
@@ -24,7 +23,6 @@ namespace ProD
 
 		void OnTriggerEnter(Collider other) {
 			if(other.tag == "Player") {
-				other.gameObject.GetComponent<Player>().collectCoins(coinAmount);
 				chestAnim.Play("open");
 				Destroy(this);
 			}
