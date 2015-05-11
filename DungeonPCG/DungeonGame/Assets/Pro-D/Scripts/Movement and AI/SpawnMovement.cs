@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProD
 {
-	public class SpawnMovement : Mtype_Corridorovement
+	public class SpawnMovement : Movement
 	{
 		public override void Setup(WorldMap newWorld)
 		{
