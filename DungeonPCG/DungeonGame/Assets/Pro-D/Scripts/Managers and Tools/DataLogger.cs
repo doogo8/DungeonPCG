@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DataLogger : MonoBehaviour {
 
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,6 +11,7 @@ public class DataLogger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
+
 	}
 }

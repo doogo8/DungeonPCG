@@ -711,7 +711,7 @@ namespace ProD
 								Generator_Cavern.SetSpecificProperties ("Abyss", "Path", "Wall", cavern_thickness, cavern_repeat_0, cavern_repeat_1, cavern_conversion_Density, cavern_frame_Size);
 								break;
 						case GeneratorType.Dungeon:
-								Generator_Dungeon.SetSpecificProperties ("Abyss", "Path", "Wall", dungeon_room_Min_X, dungeon_room_Max_X, dungeon_room_Min_Y, dungeon_room_Max_Y, dungeon_room_Freq, dungeon_room_Retry, dungeon_doorsPerRoom, dungeon_repeat, dungeon_frameMap);
+								Generator_Dungeon.SetSpecificProperties ("Abyss", "Room", "StartRoom", "EndRoom", "Corridor", "Wall", dungeon_room_Min_X, dungeon_room_Max_X, dungeon_room_Min_Y, dungeon_room_Max_Y, dungeon_room_Freq, dungeon_room_Retry, dungeon_doorsPerRoom, dungeon_repeat, dungeon_frameMap);
 								break;
 						case GeneratorType.AlternativeDungeon:
 								Generator_AlternativeDungeon.SetSpecificProperties ("Abyss", "Path", "Wall", alternativeDungeon_room_Min_X, alternativeDungeon_room_Max_X, alternativeDungeon_room_Min_Y, alternativeDungeon_room_Max_Y, alternativeDungeon_room_Freq, alternativeDungeon_room_Retry, alternativeDungeon_repeat, alternativeDungeon_frameMap, alternativeDungeon_createDoors);
