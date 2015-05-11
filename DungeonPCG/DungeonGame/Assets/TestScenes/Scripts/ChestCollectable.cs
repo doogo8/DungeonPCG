@@ -14,6 +14,7 @@ namespace ProD
 			chestAnim = gameObject.GetComponent<Animation>();
 			chestAnim.Play("open");
 			chestAnim.Stop();
+		//	chestAnim.
 		}
 		
 		// Update is called once per frame

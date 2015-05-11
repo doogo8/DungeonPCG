@@ -17,9 +17,9 @@ namespace ProD{
 		}
 
 		public class Speed{
-			public const float Low = 1f;
-			public const float Medium = 2f;
-			public const float High = 4f;
+			public const float Low = .5f;
+			public const float Medium = 1f;
+			public const float High = 2f;
 		}
 
 		public class Health{
