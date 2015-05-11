@@ -135,5 +135,17 @@ namespace ProD
 			currentCoins += numCoins;
 			coinUI.text = currentCoins.ToString();
 		}
+
+		//Checks if health is full
+		public bool healthIsFull() {
+			return currentHealth == maxHealth;
+		}
+
+		//Adds an amount of health to the player
+		public void addHealth(float amount) {
+			currentHealth += amount;
+			if(currentHealth > maxHealth)
+				currentHealth = maxHealth;
+		}
 	}
 }
