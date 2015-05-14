@@ -219,6 +219,10 @@ namespace ProD
 		/// </param>
 		public GameObject GetPrefab(string type, string[] orientation, string theme)
 		{
+			if (type == "Room") {
+				int i = 0;
+			}
+
 			GameObject prefab = null;
 			//Check in the dictionary if this type of tile already exists. If not, load it from the resources.
 

@@ -88,6 +88,7 @@ namespace ProD
 		{
 			List<string> walkableTypes = new List<string>();
 			walkableTypes.Add(type_Room);
+			walkableTypes.Add (type_Corridor);
 			walkableTypes.Add("Door");
 
 			PrepareMap();
