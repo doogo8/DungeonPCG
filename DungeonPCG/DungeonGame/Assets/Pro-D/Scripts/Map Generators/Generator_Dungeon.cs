@@ -98,8 +98,8 @@ namespace ProD
 
 			MethodLibrary.CreateMaze(map, type_Corridor, type_Abyss);
 
-			MethodLibrary.PlaceStairs(map, 1, type_StartRoom, "Entrance");
-			MethodLibrary.PlaceStairs(map, 1, type_EndRoom, "Exit", "Entrance", map.size_X * map_Size_Y / 20, walkableTypes);
+			MethodLibrary.PlaceStairs(map, 1, type_Room, "Entrance");
+			MethodLibrary.PlaceStairs(map, 1, type_Room, "Exit", "Entrance", map.size_X * map_Size_Y / 20, walkableTypes);
 
 			MethodLibrary.SetCellsOfTypeAToB(map, type_Abyss, type_Wall);
 

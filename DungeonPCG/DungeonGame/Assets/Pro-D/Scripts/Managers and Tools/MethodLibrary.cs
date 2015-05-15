@@ -1399,9 +1399,9 @@ namespace ProD
 		/// <param name='type_Stairs'>
 		/// The type that represent stairs.
 		/// </param>
-		public static void PlaceStairs(Map map, int stairCount, string type_Path, string type_Stairs)
+		public static void PlaceStairs(Map map, int stairCount, string type_Room, string type_Stairs)
 		{
-			PlaceStairs(map, stairCount, type_Path, type_Stairs, "", 0, new List<string>());
+			PlaceStairs(map, stairCount, type_Room, type_Stairs, "", 0, new List<string>());
 		}
 
 		/// <summary>
@@ -1477,6 +1477,7 @@ namespace ProD
 					}
 
 					c.SetCellType(type_Stairs);
+
 					placedCount++;
 				}
 			} while (!(placedCount == stairCount || availableCells.Count <= 0));

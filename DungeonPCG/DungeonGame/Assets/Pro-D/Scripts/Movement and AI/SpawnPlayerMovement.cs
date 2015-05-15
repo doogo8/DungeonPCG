@@ -39,7 +39,8 @@ namespace ProD
 			{
 				List<Cell> placementList = new List<Cell>();
 				placementList.AddRange(MethodLibrary.GetListOfCellType("Entrance", currentMap));
-				MoveToCell(placementList[Random.Range(0, placementList.Count - 1)]);
+				List<Cell> neighbours = MethodLibrary.FindNeighbourCells(currentMap, placementList[0].x, placementList[0].y, true, false);
+				MoveToCell(neighbours[Random.Range(0, neighbours.Count - 1)]);
 			}
 			else
 				MoveToCell(currentMap.GetCell(spawnPoint.x, spawnPoint.y));
