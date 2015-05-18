@@ -290,7 +290,7 @@ public AnimationClip jumpPoseAnimation;
 		// for the character to reach at the apex.
 		return Mathf.Sqrt(2 * targetJumpHeight * gravity);
 	}  
-	void  DidJump (){
+	public void  DidJump (){
 		jumping = true;
 		jumpingReachedApex = false;
 		lastJumpTime = Time.time;
@@ -301,7 +301,7 @@ public AnimationClip jumpPoseAnimation;
 		_characterState = CharacterState.Jumping;
 	}
 
-	int getNumJumps() {
+	public int getNumJumps() {
 		return numJumps;
 	}
 

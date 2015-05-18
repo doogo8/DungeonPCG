@@ -9,16 +9,26 @@ namespace ProD
 	{
 		public AnimationClip dieAnimation;
 		public Animation _animation;
+
 		public float maxHealth;
 		public float currentHealth;
 		private int currentCoins;
+
+		// UI
 		private Text coinUI;
+
+		// collision
 		public GameObject hitCube;
+
 		public List<Monster> hitList;
 		bool haveLandedAHit;
+
+		// death
 		public bool dead;
 		bool deathClipDone;
 		bool deathClipStarted;
+
+		// audio
 		public AudioClip swooshSound;
 		public AudioClip hitSound;
 		private AudioSource audioSource;
@@ -33,10 +43,14 @@ namespace ProD
 			hitCube = transform.Find ("PlayerHitCube").gameObject;
 			//hitCube.transform.localScale = new Vector3 (.04f, .04f, .04f);
 			_animation = GetComponent<Animation> ();
+
 			maxHealth = 100f;
 			currentHealth = 100f;
+
 			deathClipDone = false;
+
 			GameObject.Find ("ScreenUI").SetActive (true);
+
 			//Try and access the coin UI object, if it doesn't exist print an error
 			coinUI = GameObject.Find("CoinCount").GetComponent<Text>();
 			if(coinUI == null)

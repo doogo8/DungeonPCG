@@ -34,9 +34,16 @@ namespace ProD
 
 
 						//Get jumps
-//						numJumps = player.GetComponent<ThirdPersonControllerCS> ().numJumps;
-						//Get total damage to enemies
-//						totalDamageToEnemies = player.GetComponent<Player>().totalDamageToEnemies;
+						if (player != null) {
+								ThirdPersonControllerCS tpc = player.GetComponent<ThirdPersonControllerCS> ();
+								if (tpc != null) {
+										numJumps = tpc.getNumJumps ();
+								}
+				
+								//Get total damage to enemies
+								totalDamageToEnemies = player.GetComponent<Player> ().totalDamageToEnemies;
+						}
+
 				}
 
 				void Exit ()
