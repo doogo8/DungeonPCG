@@ -1354,5 +1354,9 @@ namespace ProD
 						}
 						return (hashCode);
 				}
+
+				public int getEnemyFrequency() {
+					return enemy_frequency;
+		}
 		}
 }

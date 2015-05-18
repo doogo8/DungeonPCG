@@ -63,11 +63,18 @@ namespace ProD{
 		private bool aggroingPlayer;
 		private bool haveLandedAHit;
 
+		//For DataLogger
+		public GameObject dataLogger;
+
 		void Awake() {
 			_animation = GetComponent<Animation> ();
 			randomNearbyLocation = new Vector3 ();
 			hitCube = transform.Find("MonsterHitCube").gameObject;
 			//hitCube.transform.localScale = new Vector3 (.04f, .04f, .04f);
+
+			//Get DataLogger
+			if (GameObject.Find ("DataLogger") != null)
+				dataLogger = GameObject.Find ("DataLogger");
 		}
 
 		void Update ()
@@ -97,8 +104,9 @@ namespace ProD{
 		}
 
 		void checkForDeath(){
-			if(currentHealth <= 0f) 
-				dead = true;
+			if (currentHealth <= 0f) {
+			dead = true;
+			}
 			else
 				dead = false;
 		}
@@ -114,6 +122,7 @@ namespace ProD{
 			}
 
 			if(deathClipDone){
+				dataLogger.GetComponent<DataLogger> ().enemiesKilled += 1;
 				Component[] g = GetComponents(typeof(Component));
 
 				foreach(Component comp in g){
@@ -198,6 +207,7 @@ namespace ProD{
 
 			if(haveLandedAHit == false && amIFacingPlayer() && attackClipPlaying){
 				player.GetComponent<Player>().currentHealth -= attackDamage;
+				dataLogger.GetComponent<DataLogger>().totalDamageToPlayer += attackDamage;
 				haveLandedAHit = true;
 			}
 

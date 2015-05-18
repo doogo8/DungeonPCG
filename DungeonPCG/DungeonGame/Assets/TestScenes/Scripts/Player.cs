@@ -35,6 +35,7 @@ namespace ProD
 		private float lowPitchRange = .75F;
 		private float highPitchRange = 1.5F;
 
+		//The following will be retrieved by DataLogger
 		public int totalDamageToEnemies;
 	
 		void Start ()

@@ -24,6 +24,7 @@ public class ThirdPersonControllerCS : MonoBehaviour {
 	
 	private Animation _animation;
 
+	//The following will be retrieved by DataLogger
 	public int numJumps = 0;
 	
 	enum CharacterState {
