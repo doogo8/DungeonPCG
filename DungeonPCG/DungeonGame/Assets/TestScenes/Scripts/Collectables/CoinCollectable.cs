@@ -16,6 +16,15 @@ namespace ProD
 				Destroy(this.gameObject);
 			}
 		}
+
+		//Static function that will spawn coins at a certain location, used by other classes
+		public static void spawnCoins(Vector3 location, int amount){
+			for(int i = 0; i < amount; i++) {
+				GameObject coin = (GameObject)Instantiate(Resources.Load("coin"));
+				coin.transform.position = location;
+				coin.GetComponent<CollectableBounce>().init();
+			}
+		}
 	}
 
 }
