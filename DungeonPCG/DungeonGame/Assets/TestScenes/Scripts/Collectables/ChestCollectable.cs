@@ -10,13 +10,10 @@ namespace ProD
 		bool isActiveChest;
 		bool isOpening;
 		float openingTime = 0;
-		static GameObject useKeyUI;
 		private static ChestCollectable activeChest = null;
 
 		// Use this for initialization
 		void Start () {
-			if(useKeyUI == null)
-				useKeyUI = GameObject.Find("UseKeyUI");
 			chestAnim = gameObject.GetComponent<Animation>();
 			chestAnim.Play("open");
 			chestAnim.Sample();
@@ -31,7 +28,7 @@ namespace ProD
 					chestAnim.Play("open");
 					isOpening = true;
 					Destroy(this.GetComponent<Collider>());
-					useKeyUI.transform.position = Vector3.zero;
+					UseKeyUI.banishUseKeyUI();
 				}
 			}
 			if(isOpening) {
@@ -52,7 +49,7 @@ namespace ProD
 					activeChest.isActiveChest = false;
 				activeChest = this;
 				isActiveChest = true;
-				useKeyUI.transform.position = transform.position + Vector3.up*.5f;
+				UseKeyUI.summonUseKeyUI(transform.position + Vector3.up*.5f);
 			}
 		}
 
@@ -62,7 +59,7 @@ namespace ProD
 				if(isActiveChest) {
 					isActiveChest = false;
 					activeChest = null;
-					useKeyUI.transform.position = Vector3.zero;
+					UseKeyUI.banishUseKeyUI();
 				}
 			}
 		}

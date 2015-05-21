@@ -24,7 +24,6 @@ public class CollectableBounce : MonoBehaviour {
 		sideVec.x = Mathf.Cos(randAngle);
 		sideVec.y = Mathf.Sin(randAngle);
 		bounceVelocity = initialVelocity;
-		Debug.Log(bounceVelocity);
 	}
 	
 	// Update is called once per frame

@@ -47,6 +47,7 @@ namespace ProD{
 		public float chaseSpeed = 0.6f;
 		public float roamSpeed = 0.06f;
 		public float attackDamage = 10f;
+		public int coinReward = 1;
 		public AttackType attackType;
 		
 		public GameObject player;
@@ -123,6 +124,7 @@ namespace ProD{
 
 			if(deathClipDone){
 				dataLogger.GetComponent<DataLogger> ().enemiesKilled += 1;
+				CoinCollectable.spawnCoins(transform.position, coinReward);
 				Component[] g = GetComponents(typeof(Component));
 
 				foreach(Component comp in g){
