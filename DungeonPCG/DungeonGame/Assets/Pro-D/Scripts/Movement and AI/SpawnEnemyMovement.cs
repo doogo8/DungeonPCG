@@ -38,8 +38,7 @@ namespace ProD
 			if (spawnPoint == null)
 			{
 				List<Cell> placementList = new List<Cell>();
-				foreach (string walkableType in walkableCellTypes)
-					placementList.AddRange(MethodLibrary.GetListOfCellType(walkableType, currentMap));
+				placementList.AddRange(MethodLibrary.GetListOfCellType("Room", currentMap));
 				MoveToCell(placementList[Random.Range(0, placementList.Count - 1)]);
 			}
 			else

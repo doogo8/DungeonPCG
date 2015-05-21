@@ -24,6 +24,7 @@ public class ThirdPersonControllerCS : MonoBehaviour {
 	
 	private Animation _animation;
 
+	//The following will be retrieved by DataLogger
 	public int numJumps = 0;
 	
 	enum CharacterState {
@@ -290,7 +291,7 @@ public AnimationClip jumpPoseAnimation;
 		// for the character to reach at the apex.
 		return Mathf.Sqrt(2 * targetJumpHeight * gravity);
 	}  
-	void  DidJump (){
+	public void  DidJump (){
 		jumping = true;
 		jumpingReachedApex = false;
 		lastJumpTime = Time.time;
@@ -301,7 +302,7 @@ public AnimationClip jumpPoseAnimation;
 		_characterState = CharacterState.Jumping;
 	}
 
-	int getNumJumps() {
+	public int getNumJumps() {
 		return numJumps;
 	}
 

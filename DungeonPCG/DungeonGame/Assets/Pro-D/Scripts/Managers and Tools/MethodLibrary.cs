@@ -864,7 +864,7 @@ namespace ProD
 		/// <param name='type_Abyss'>
 		/// The type where the maze is placed on.
 		/// </param>
-		public static void CreateMaze(Map map, string type_Path, string type_Abyss)
+		public static void CreateMaze(Map map, string type_Corridor, string type_Abyss)
 		{
 			//Debug.Log("Creating maze.");
 			List<Cell> listOfMazeACells = new List<Cell>();
@@ -949,7 +949,7 @@ namespace ProD
 				if (targetCell_X < currentCell_X) cellInMid_X--;
 				if (targetCell_Y > currentCell_Y) cellInMid_Y++;
 				if (targetCell_Y < currentCell_Y) cellInMid_Y--;
-				map.cellsOnMap[cellInMid_X, cellInMid_Y].SetCellType(type_Path);
+				map.cellsOnMap[cellInMid_X, cellInMid_Y].SetCellType(type_Corridor);
 
 				//Make target the current cell.
 				Cell targetCell = map.cellsOnMap[targetCell_X, targetCell_Y];
@@ -970,7 +970,7 @@ namespace ProD
 				currentCell_Y = targetCell_Y;
 			}
 
-			SetCellsOfTypeAToB(map, "Maze_A", type_Path); //typeOfMaze is usually Path.
+			SetCellsOfTypeAToB(map, "Maze_A", type_Corridor); //typeOfMaze is usually Path.
 			//Debug.Log("Created maze.");
 			//Debug.Break();
 		}
@@ -1016,7 +1016,7 @@ namespace ProD
 		/// <param name='createDoors'>
 		/// If set to true, this creates doors for the rooms.
 		/// </param>
-		public static List<Room> CreateRooms(Map map, string type_Wall, string type_Path, int min_X, int max_X, int min_Y, int max_Y, int roomFrequency, int roomRetry, int doorsPerRoom = 0)
+		public static List<Room> CreateRooms(Map map, string type_Wall, string type_Room, int min_X, int max_X, int min_Y, int max_Y, int roomFrequency, int roomRetry, int doorsPerRoom = 0)
 		{
 			//Debug.Log("Creating rooms.");
 			List<Room> rooms = new List<Room>();
@@ -1126,7 +1126,7 @@ namespace ProD
 							}
 							else
 							{
-								map.cellsOnMap[i, j].SetCellType(type_Path); //Interior, usually path.
+								map.cellsOnMap[i, j].SetCellType(type_Room); //Interior, usually path.
 							}
 						}
 					}
@@ -1399,9 +1399,9 @@ namespace ProD
 		/// <param name='type_Stairs'>
 		/// The type that represent stairs.
 		/// </param>
-		public static void PlaceStairs(Map map, int stairCount, string type_Path, string type_Stairs)
+		public static void PlaceStairs(Map map, int stairCount, string type_Room, string type_Stairs)
 		{
-			PlaceStairs(map, stairCount, type_Path, type_Stairs, "", 0, new List<string>());
+			PlaceStairs(map, stairCount, type_Room, type_Stairs, "", 0, new List<string>());
 		}
 
 		/// <summary>
@@ -1432,7 +1432,7 @@ namespace ProD
 		/// <param name='walkableTypes'>
 		/// The types that can be walked on.
 		/// </param>
-		public static void PlaceStairs(Map map, int stairCount, string type_Path, string type_Stairs, string type_opposite, int minDistance, List<string> walkableTypes)
+		public static void PlaceStairs(Map map, int stairCount, string type_Room, string type_Stairs, string type_opposite, int minDistance, List<string> walkableTypes)
 		{
 			if (stairCount == 0) return;
 
@@ -1441,10 +1441,10 @@ namespace ProD
 			if (map.Rooms.Count > 0)
 			{
 				foreach (Room r in map.Rooms)
-					availableCells.AddRange(r.GetCellsInRoom(map).FindAll(p => p.type == type_Path));
+					availableCells.AddRange(r.GetCellsInRoom(map).FindAll(p => p.type == type_Room));
 			}
 			else
-				availableCells = GetListOfCellType(type_Path, map);
+				availableCells = GetListOfCellType(type_Room, map);
 
 			//Go through all available cells and remove one at a time.
 			//If the cell has 8 empty cells around it then place stairs.
@@ -1457,7 +1457,7 @@ namespace ProD
 				availableCells.RemoveAt(randomCell);
 
 				List<Cell> neighbours = FindNeighbourCells(map, c.x, c.y, true, false);
-				if (neighbours.FindAll(n => n.type == type_Path).Count == 8)
+				if (neighbours.FindAll(n => n.type == type_Room).Count == 8)
 				{
 					if (minDistance > 0)
 					{
@@ -1477,6 +1477,7 @@ namespace ProD
 					}
 
 					c.SetCellType(type_Stairs);
+
 					placedCount++;
 				}
 			} while (!(placedCount == stairCount || availableCells.Count <= 0));
@@ -1484,7 +1485,7 @@ namespace ProD
 			//this shall be replaced by a smart algorithm to find a cell that has the biggest distance possible to its closest type_opposite
 			if (placedCount != stairCount && minDistance > 0)
 			{
-				PlaceStairs(map, stairCount, type_Path, type_Stairs);
+				PlaceStairs(map, stairCount, type_Room, type_Stairs);
 				//Debug.Log("ifailed");
 				//Debug.Break();
 			}
@@ -1507,10 +1508,10 @@ namespace ProD
 		/// <param name='repeat'>
 		/// How much times to repeat this algorithm.
 		/// </param>
-		public static void ReduceUCorridors(Map map, string type_Wall, string type_Path, int repeat)
+		public static void ReduceUCorridors(Map map, string type_Wall, string type_Corridor, int repeat)
 		{
 			if (repeat == 0) return;
-			List<Cell> uCorridorCells = GetUCorridorCells(map, type_Wall, type_Path);
+			List<Cell> uCorridorCells = GetUCorridorCells(map, type_Wall, type_Corridor);
 			for (int i = 0; i < uCorridorCells.Count; i++)
 			{
 				Cell c = uCorridorCells[i];
@@ -1525,7 +1526,7 @@ namespace ProD
 					for (int jj = c.y - 1; jj <= c.y + 1; jj++)
 					{
 						if (map.Contains(ii, jj) == false || (ii == c.x && jj == c.y)) continue;
-						if (map.cellsOnMap[ii, jj].type.Equals(type_Path)) pathCount++;
+						if (map.cellsOnMap[ii, jj].type.Equals(type_Corridor)) pathCount++;
 						else if (map.cellsOnMap[ii, jj].type == type_Wall)
 						{
 							wallCellX = ii;
@@ -1601,13 +1602,13 @@ namespace ProD
 						map.cellsOnMap[c.x + 1, c.y + 1].SetCellType(type_Wall); //Northeast
 						map.cellsOnMap[c.x + 1, c.y].SetCellType(type_Wall); //East
 						//mapArray[c.x+1, c.y-1].SetCell(  type_Wall ); //Southeast
-						map.cellsOnMap[c.x, c.y - 1].SetCellType(type_Path); //South
+						map.cellsOnMap[c.x, c.y - 1].SetCellType(type_Corridor); //South
 						//mapArray[c.x-1, c.y-1].SetCell(  type_Wall ); //Southwest
 					}
 					else if (wallCellX < c.x && wallCellY == c.y)
 					{
 						//Turn part of U into wall.
-						map.cellsOnMap[c.x - 1, c.y].SetCellType(type_Path); //West
+						map.cellsOnMap[c.x - 1, c.y].SetCellType(type_Corridor); //West
 						//mapArray[c.x-1, c.y+1].SetCell(  type_Wall ); //Northwest
 						map.cellsOnMap[c.x, c.y + 1].SetCellType(type_Wall); //North
 						map.cellsOnMap[c.x + 1, c.y + 1].SetCellType(type_Wall); //Northeast
@@ -1621,7 +1622,7 @@ namespace ProD
 						//Turn part of U into wall.
 						map.cellsOnMap[c.x - 1, c.y].SetCellType(type_Wall); //West
 						//mapArray[c.x-1, c.y+1].SetCell(  type_Wall ); //Northwest
-						map.cellsOnMap[c.x, c.y + 1].SetCellType(type_Path); //North
+						map.cellsOnMap[c.x, c.y + 1].SetCellType(type_Corridor); //North
 						//mapArray[c.x+1, c.y+1].SetCell(  type_Wall ); //Northeast
 						map.cellsOnMap[c.x + 1, c.y].SetCellType(type_Wall); //East
 						map.cellsOnMap[c.x + 1, c.y - 1].SetCellType(type_Wall); //Southeast
@@ -1635,7 +1636,7 @@ namespace ProD
 						map.cellsOnMap[c.x - 1, c.y + 1].SetCellType(type_Wall); //Northwest
 						map.cellsOnMap[c.x, c.y + 1].SetCellType(type_Wall); //North
 						//mapArray[c.x+1, c.y+1].SetCell(  type_Wall ); //Northeast
-						map.cellsOnMap[c.x + 1, c.y].SetCellType(type_Path); //East
+						map.cellsOnMap[c.x + 1, c.y].SetCellType(type_Corridor); //East
 						//mapArray[c.x+1, c.y-1].SetCell(  type_Wall ); //Southeast
 						map.cellsOnMap[c.x, c.y - 1].SetCellType(type_Wall); //South
 						map.cellsOnMap[c.x - 1, c.y - 1].SetCellType(type_Wall); //Southwest
@@ -1643,7 +1644,7 @@ namespace ProD
 				}
 			}
 
-			ReduceUCorridors(map, type_Wall, type_Path, repeat - 1);
+			ReduceUCorridors(map, type_Wall, type_Corridor, repeat - 1);
 
 		}
 
