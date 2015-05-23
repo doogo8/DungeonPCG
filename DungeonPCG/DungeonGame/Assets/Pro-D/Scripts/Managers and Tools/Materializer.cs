@@ -219,7 +219,7 @@ namespace ProD
 		/// </param>
 		public GameObject GetPrefab(string type, string[] orientation, string theme)
 		{
-			if (type == "Room") {
+			if (type == "Entrance") {
 				int i = 0;
 			}
 

@@ -140,11 +140,11 @@ namespace ProD
 						}
 				}
 
-				public void SpawnEnemies (GameObject[] enemyPrefabs, WorldMap world, int enemy_frequency, int enemy_variety)
+				public void SpawnEnemies (GameObject[] enemyPrefabs, WorldMap world, int enemy_frequency, int room_frequency, int enemy_variety)
 				{
 						for (int i = 0; i < enemy_variety; i++) {
 								if (i < enemyPrefabs.Length) {
-										for (int j = 0; j < enemy_frequency; j++) {
+										for (int j = 0; j < enemy_frequency * room_frequency; j++) {
 												GameObject enemyGO = (GameObject)Instantiate (enemyPrefabs [i]);
 												Goblin goblin = enemyGO.GetComponent<Goblin> ();
 												goblin.player = GameObject.Find ("ai-test-adventurer(Clone)");

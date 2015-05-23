@@ -224,9 +224,9 @@ namespace ProD
 		#endregion
 
 		#region ControllableFeatures
-				private int enemy_frequency = 5;
-				private int enemy_variety = 5;
-				private int boss_fights = 2;
+				private int enemy_frequency = 3;
+				private int enemy_variety = 1;
+				private int boss_fights = 0;
 				private int trap_frequency = 1;
 				private int chest_frequency = 1;
 				private int health_frequency = 1;
@@ -893,7 +893,7 @@ namespace ProD
 								ProDManager.Instance.ApplySeed ();
 					//to spawn the player, only one simple call has to be done
 								ProDManager.Instance.SpawnPlayer (player3DPrefab, worldMap);
-								ProDManager.Instance.SpawnEnemies(enemyPrefabs, worldMap, enemy_frequency, enemy_variety);
+								ProDManager.Instance.SpawnEnemies(enemyPrefabs, worldMap, enemy_frequency, worldMap.maps[0, 0].Rooms.Count, enemy_variety);
 								ProDManager.Instance.SpawnHealth(healthPrefab, worldMap, health_frequency);
 								ProDManager.Instance.SpawnTreasure(chestPrefab, worldMap, chest_frequency);
 								ProDManager.Instance.SpawnTraps(trapPrefab, worldMap, trap_frequency);
@@ -1110,12 +1110,12 @@ namespace ProD
 
 				void showControllableSettings ()
 				{
-						makeSliderInScrollbar ("enemy frequency", ref enemy_frequency, 1, 10, true, "Enemy Frequency is the average number of enemies per room.");
+						makeSliderInScrollbar ("enemy frequency", ref enemy_frequency, 1, 5, true, "Enemy Frequency is the average number of enemies per room.");
 						makeSliderInScrollbar ("enemy variety", ref enemy_variety, 1, 5, true, "Enemey Vairety is the numebr of different types of enemies the level will have.");
 						makeSliderInScrollbar ("boss fights", ref boss_fights, 0, 2, true, "Boss Fights is the number of boss fights in the level.");
 						makeSliderInScrollbar ("trap frequency", ref trap_frequency, 0, 4, true, "Trap Frequency is the average number of traps in the hallways.");
-						makeSliderInScrollbar ("health frequency", ref health_frequency, 0, 4, true, "Health Frequency is the average number of health packs in the level.");
-						makeSliderInScrollbar ("chest frequency", ref chest_frequency, 0, 4, true, "Chest Frequency is the average number of treasure chests in the rooms.");
+						makeSliderInScrollbar ("health frequency", ref health_frequency, 0, 4, true, "Health Frequency is the average number of health packs in the hallways.");
+						makeSliderInScrollbar ("chest frequency", ref chest_frequency, 0, 4, true, "Chest Frequency is the average number of treasure chests in the level.");
 				}
 
 		#endregion
