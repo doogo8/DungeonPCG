@@ -140,6 +140,59 @@ namespace ProD
 						}
 				}
 
+				/// <summary>
+				/// Removes the player properly, if there is one.
+				/// </summary>
+				public void DestroyEnemies ()
+				{
+						foreach (var enemyGO in enemyGOs) {
+								if (enemyGO != null) {
+										Destroy (enemyGO);
+								}
+						}
+						enemyGOs.Clear ();
+				}
+
+				/// <summary>
+				/// Removes the player properly, if there is one.
+				/// </summary>
+				public void DestroyChests ()
+				{
+						foreach (var chestGO in chestGOs) {
+								if (chestGO != null) {
+										Destroy (chestGO);
+								}
+						}
+			chestGOs.Clear ();
+				}
+
+				/// <summary>
+				/// Removes the player properly, if there is one.
+				/// </summary>
+				public void DestroyTraps ()
+				{
+					foreach (var trapGO in trapGOs) {
+						if (trapGO != null) {
+							Destroy (trapGO);
+						}
+					}
+			trapGOs.Clear ();
+				}
+
+				/// <summary>
+				/// Removes the player properly, if there is one.
+				/// </summary>
+				public void DestroyCoins ()
+				{
+						GameObject[] coins = GameObject.FindGameObjectsWithTag ("Coin");
+						
+						foreach (var coinGO in coins) {
+							if (coinGO != null) {
+								Destroy (coinGO);
+							}
+						}
+				}
+	
 				public void SpawnEnemies (GameObject[] enemyPrefabs, WorldMap world, int enemy_frequency, int room_frequency, int enemy_variety)
 				{
 						for (int i = 0; i < enemy_variety; i++) {

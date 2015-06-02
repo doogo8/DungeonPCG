@@ -8,15 +8,28 @@ namespace ProD
 
 				public GameObject player;
 				public GameObject exampleSceneGUI;
+				
 				//The following will be fetched from other scripts
 				public int numJumps;
+
+				// enemies
 				public int totalDamageToEnemies;
 				public float totalEnemies;
 				public float enemiesKilled;
 				public float enemiesKilledPercentage;
 
-				//This is incremented in Monster.cs
-				public float totalDamageToPlayer;
+				// attacks
+				public int totalPlayerAttacks;
+				public int totalPlayerAttacksLanded;
+				public int totalEnemyAttacks;
+				public int totalEnemyAttacksLanded;
+				public int totalDamageToPlayer;
+				public int totalDamageToEnemy;
+
+				// items
+				public float treasureCollectPercentage;
+				public float healthCollectPercentage;
+
 
 				// Use this for initialization
 				void Start ()
@@ -46,16 +59,17 @@ namespace ProD
 
 
 						//Get jumps and total damage to enemies
-						if (player != null) {
-								ThirdPersonControllerCS tpc = player.GetComponent<ThirdPersonControllerCS> ();
-								if (tpc != null) {
-										numJumps = tpc.getNumJumps ();
-								}
-				
-								//Get total damage to enemies from Player.cs script
-								totalDamageToEnemies = player.GetComponent<Player> ().totalDamageToEnemies;
-						}
+//						if (player != null) {
+//								ThirdPersonControllerCS tpc = player.GetComponent<ThirdPersonControllerCS> ();
+//								if (tpc != null) {
+//										numJumps = tpc.getNumJumps ();
+//								}
+//				
+//								//Get total damage to enemies from Player.cs script
+//								totalDamageToEnemies = player.GetComponent<Player> ().totalDamageToEnemies;
+//						}
 						//Get total number of enemies in the level
+
 						if (exampleSceneGUI != null) {
 							totalEnemies = exampleSceneGUI.GetComponent<ExampleSceneGUI>().getEnemyFrequency();
 						}

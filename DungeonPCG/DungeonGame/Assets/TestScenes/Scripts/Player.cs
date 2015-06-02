@@ -37,6 +37,7 @@ namespace ProD
 
 		//The following will be retrieved by DataLogger
 		public int totalDamageToEnemies;
+		public int totalAttacks;
 	
 		void Start ()
 		{	
@@ -106,6 +107,7 @@ namespace ProD
 	
 		void die ()
 		{
+			// destroy components
 			if (GetComponent<ThirdPersonControllerCS> () != null)
 				Destroy (GetComponent<ThirdPersonControllerCS> ());
 		
@@ -117,16 +119,13 @@ namespace ProD
 		
 			if (deathClipDone) {
 				_animation.enabled = false;
-				Component[] g = GetComponents (typeof(Component));
-			
-				foreach (Component comp in g) {
-					if (!(comp is UnityEngine.Transform) && !(comp is Player))
-						Destroy (comp);
-				}
-			
-				Destroy (transform.Find ("PlayerHitCube").gameObject);
-				Destroy (GetComponent<Player> ());
 			}
+
+			// update stats
+			DataLogger dl = GameObject.Find ("DataLogger").GetComponent ("DataLogger") as DataLogger;
+			dl.totalDamageToEnemies += totalDamageToEnemies;
+			dl.totalPlayerAttacks += totalAttacks;
+//			dl.
 		}
 	
 		bool amAttacking ()

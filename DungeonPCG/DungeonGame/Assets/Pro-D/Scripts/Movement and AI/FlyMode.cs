@@ -39,7 +39,7 @@ public class FlyMode : MonoBehaviour
 			if (characterController.enabled)
 			{
 				characterController.enabled = false;
-				characterMotor.enabled = false;
+//				characterMotor.enabled = false;
 			}
 
 
@@ -56,8 +56,8 @@ public class FlyMode : MonoBehaviour
 			if (!characterController.enabled)
 			{
 				characterController.enabled = true;
-				characterMotor.enabled = true;
-				characterMotor.movement.velocity = velocity;
+//				characterMotor.enabled = true;
+//				characterMotor.movement.velocity = velocity;
 			}
 		}
 	}

@@ -20,12 +20,13 @@ namespace ProD
 		public class ExampleSceneGUI : MonoBehaviour
 		{
 
-		GameObject playerHealth;
+				GameObject playerHealth;
 
-		void Start() {
-			playerHealth = GameObject.Find ("ScreenUI");
-			playerHealth.SetActive (false);
-		}
+				void Start ()
+				{
+						playerHealth = GameObject.Find ("ScreenUI");
+						playerHealth.SetActive (false);
+				}
 
 				public GUISkin skin;
 				public Texture logo;
@@ -39,6 +40,7 @@ namespace ProD
 				public GameObject trapPrefab;
 				public GameObject cameraGO;
 				public WorldMap worldMap;
+
 				private Texture mapTexture;
 				private bool mapTextureNeedsUpdate;
 
@@ -829,7 +831,7 @@ namespace ProD
 				/// <summary>
 				/// Materializes the current WorldMap with the current settings.
 				/// </summary>
-				private void materialize ()
+				public void materialize ()
 				{
 
 						if (worldMap == null)
@@ -837,6 +839,10 @@ namespace ProD
 
 						//first of all we need to get rid of old stuff in case there is already a materialized world
 						ProDManager.Instance.DestroyPlayer ();
+						ProDManager.Instance.DestroyEnemies ();
+						ProDManager.Instance.DestroyChests ();
+						ProDManager.Instance.DestroyTraps ();
+						ProDManager.Instance.DestroyCoins ();
 						ProDManager.Instance.getFogOfWar ().DestroyFoW ();
 						ProDManager.Instance.getPathfinding ().DestroyPathfinding ();
 						Materializer.Instance.UnmaterializeWorldMap ();
@@ -893,10 +899,10 @@ namespace ProD
 								ProDManager.Instance.ApplySeed ();
 					//to spawn the player, only one simple call has to be done
 								ProDManager.Instance.SpawnPlayer (player3DPrefab, worldMap);
-								ProDManager.Instance.SpawnEnemies(enemyPrefabs, worldMap, enemy_frequency, worldMap.maps[0, 0].Rooms.Count, enemy_variety);
-								ProDManager.Instance.SpawnHealth(healthPrefab, worldMap, health_frequency);
-								ProDManager.Instance.SpawnTreasure(chestPrefab, worldMap, chest_frequency);
-								ProDManager.Instance.SpawnTraps(trapPrefab, worldMap, trap_frequency);
+								ProDManager.Instance.SpawnEnemies (enemyPrefabs, worldMap, enemy_frequency, worldMap.maps [0, 0].Rooms.Count, enemy_variety);
+								ProDManager.Instance.SpawnHealth (healthPrefab, worldMap, health_frequency);
+								ProDManager.Instance.SpawnTreasure (chestPrefab, worldMap, chest_frequency);
+								ProDManager.Instance.SpawnTraps (trapPrefab, worldMap, trap_frequency);
 								playerHealth.SetActive (true);
 //					ProDManager.Instance.SpawnEnemies();
 								break;
@@ -1355,8 +1361,9 @@ namespace ProD
 						return (hashCode);
 				}
 
-				public int getEnemyFrequency() {
-					return enemy_frequency;
-		}
+				public int getEnemyFrequency ()
+				{
+						return enemy_frequency;
+				}
 		}
 }

@@ -11,9 +11,9 @@ namespace ProD{
 		}
 
 		public class Damage{
-			public const float Low = 2f;
-			public const float Medium = 10f;
-			public const float High = 20f;
+			public const int Low = 2;
+			public const int Medium = 10;
+			public const int High = 20;
 		}
 
 		public class Speed{
@@ -23,9 +23,9 @@ namespace ProD{
 		}
 
 		public class Health{
-			public const float Low = 50f;
-			public const float Medium = 100f;
-			public const float High = 200f;
+			public const int Low = 50;
+			public const int Medium = 100;
+			public const int High = 200;
 		}
 		
 		public class AggroRange{
@@ -46,7 +46,7 @@ namespace ProD{
 		public float aggroRange = 7f;
 		public float chaseSpeed = 0.6f;
 		public float roamSpeed = 0.06f;
-		public float attackDamage = 10f;
+		public int attackDamage = 10;
 		public int coinReward = 1;
 		public AttackType attackType;
 		
@@ -83,6 +83,10 @@ namespace ProD{
 			checkForDeath();
 
 			if(!dead){
+				if (player == null) {
+					player = GameObject.Find("ai-test-adventurer(Clone)");
+				}
+
 				if(player.GetComponent<Player>() != null){ //would mean player is dead
 					if(aggroingPlayer && !reachedPlayer()){
 						chase ();
@@ -123,7 +127,7 @@ namespace ProD{
 			}
 
 			if(deathClipDone){
-				dataLogger.GetComponent<DataLogger> ().enemiesKilled += 1;
+				dataLogger.GetComponent<DataLogger> ().enemiesKilled++;
 				CoinCollectable.spawnCoins(transform.position, coinReward);
 				Component[] g = GetComponents(typeof(Component));
 
@@ -208,9 +212,12 @@ namespace ProD{
 			}
 
 			if(haveLandedAHit == false && amIFacingPlayer() && attackClipPlaying){
-				player.GetComponent<Player>().currentHealth -= attackDamage;
-				dataLogger.GetComponent<DataLogger>().totalDamageToPlayer += attackDamage;
-				haveLandedAHit = true;
+				if (!player.GetComponent<Player>().dead) {
+						player.GetComponent<Player>().currentHealth -= attackDamage;
+						dataLogger.GetComponent<DataLogger>().totalDamageToPlayer += attackDamage;
+						dataLogger.GetComponent<DataLogger>().totalEnemyAttacks++;
+						haveLandedAHit = true;
+				}
 			}
 
 			transform.forward = Vector3.Lerp (transform.forward, (player.transform.position - transform.position), Time.deltaTime * 3f);
